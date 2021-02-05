@@ -35,6 +35,7 @@
         <projectBaseDir>${project.basedir}/..</projectBaseDir>
         <debug.jetty.daemon>true</debug.jetty.daemon>
         <log4j.configuration.url>file:///${project.build.directory}/../../distro/src/conf/atlas-log4j.xml</log4j.configuration.url>
+        <prometheus.client.version>0.8.0</prometheus.client.version>
     </properties>
 
     <profiles>
@@ -54,7 +55,7 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <packages.to.exclude>WEB-INF/lib/je-*.jar,WEB-INF/lib/dom4j-*.jar</packages.to.exclude>
+<!--                <packages.to.exclude>WEB-INF/lib/je-*.jar</packages.to.exclude>-->
             </properties>
         </profile>
 
@@ -484,6 +485,22 @@
             <groupId>org.keycloak</groupId>
             <artifactId>keycloak-spring-security-adapter</artifactId>
             <version>${keycloak.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.prometheus</groupId>
+            <artifactId>simpleclient</artifactId>
+            <version>${prometheus.client.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.prometheus</groupId>
+            <artifactId>simpleclient_servlet</artifactId>
+            <version>${prometheus.client.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.prometheus</groupId>
+            <artifactId>simpleclient_hotspot</artifactId>
+            <version>${prometheus.client.version}</version>
         </dependency>
 
     </dependencies>

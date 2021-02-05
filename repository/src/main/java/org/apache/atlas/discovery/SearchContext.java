@@ -18,7 +18,9 @@
 package org.apache.atlas.discovery;
 
 
+import org.apache.atlas.ApplicationProperties;
 import org.apache.atlas.AtlasErrorCode;
+import org.apache.atlas.AtlasException;
 import org.apache.atlas.exception.AtlasBaseException;
 import org.apache.atlas.model.discovery.SearchParameters;
 import org.apache.atlas.model.discovery.SearchParameters.FilterCriteria;
@@ -81,6 +83,8 @@ public class SearchContext {
     public final static AtlasClassificationType MATCH_ALL_CLASSIFICATION_TYPES    = AtlasClassificationType.getClassificationRoot();
     public final static AtlasEntityType         MATCH_ALL_ENTITY_TYPES            = AtlasEntityType.getEntityRoot();
 
+    private static final String FULL_TEXT_EXCLUDE_ATTRIBUTE_PROPERTY = "atlas.search.fulltext.type";
+
 
     public SearchContext(SearchParameters searchParameters, AtlasTypeRegistry typeRegistry, AtlasGraph graph, Set<String> indexedKeys) throws AtlasBaseException {
         this.classificationName = searchParameters.getClassification();
@@ -123,6 +127,7 @@ public class SearchContext {
                 classificationTypeAndSubTypes       = Collections.emptySet();
                 classificationTypeAndSubTypesQryStr = ALL_TYPE_QUERY;
             } else {
+
                 classificationTypeAndSubTypes       = searchParameters.getIncludeSubClassifications() ? classificationType.getTypeAndAllSubTypes() : Collections.singleton(classificationType.getTypeName());
                 classificationTypeAndSubTypesQryStr = searchParameters.getIncludeSubClassifications() ? classificationType.getTypeAndAllSubTypesQryStr() : classificationType.getTypeQryStr();
             }
@@ -136,8 +141,34 @@ public class SearchContext {
                 typeAndSubTypes       = Collections.emptySet();
                 typeAndSubTypesQryStr = ALL_TYPE_QUERY;
             } else {
-                typeAndSubTypes       = searchParameters.getIncludeSubTypes() ? entityType.getTypeAndAllSubTypes() : Collections.singleton(entityType.getTypeName());
-                typeAndSubTypesQryStr = searchParameters.getIncludeSubTypes() ? entityType.getTypeAndAllSubTypesQryStr() : entityType.getTypeQryStr();
+                if (searchParameters.getIncludeSubTypes()) {
+                    String[] excludeSubTypes = null;
+                    try {
+                        excludeSubTypes = ApplicationProperties.get().getStringArray(FULL_TEXT_EXCLUDE_ATTRIBUTE_PROPERTY + "." +
+                                entityType.getTypeName() + "." + "subTypes.exclude");
+
+                    } catch (AtlasException e) {
+                        e.printStackTrace();
+                    }
+                    if (null != excludeSubTypes && excludeSubTypes.length > 0) {
+                        typeAndSubTypes = new HashSet<>();
+                        Set<String> excludeSubTypesSet = new HashSet<>(Arrays.asList(excludeSubTypes));
+                        Set<String> typeAndSubTypesTmp = entityType.getTypeAndAllSubTypes();
+                        for (String subType : typeAndSubTypesTmp) {
+                            if (!excludeSubTypesSet.contains(subType)) {
+                                typeAndSubTypes.add(subType);
+                            }
+                        }
+                        typeAndSubTypesQryStr = AtlasStructType.AtlasAttribute.escapeIndexQueryValue(typeAndSubTypes);
+                    } else {
+                        typeAndSubTypes       = entityType.getTypeAndAllSubTypes();
+                        typeAndSubTypesQryStr = entityType.getTypeAndAllSubTypesQryStr();
+                    }
+
+                } else {
+                    typeAndSubTypes       = Collections.singleton(entityType.getTypeName());
+                    typeAndSubTypesQryStr = entityType.getTypeQryStr();
+                }
             }
         } else {
             typeAndSubTypes       = Collections.emptySet();

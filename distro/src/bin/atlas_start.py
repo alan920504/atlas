@@ -25,7 +25,7 @@ ATLAS_LOG_OPTS="-Datlas.log.dir=%s -Datlas.log.file=%s.log"
 ATLAS_COMMAND_OPTS="-Datlas.home=%s"
 ATLAS_CONFIG_OPTS="-Datlas.conf=%s"
 DEFAULT_JVM_HEAP_OPTS="-Xmx1024m"
-DEFAULT_JVM_OPTS="-Dlog4j.configuration=atlas-log4j.xml -Djava.net.preferIPv4Stack=true -server"
+DEFAULT_JVM_OPTS="-Dlog4j.configuration=atlas-log4j.xml -Djava.net.preferIPv4Stack=true -server -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8888"
 
 def main():
 
@@ -126,7 +126,9 @@ def main():
             mc.run_zookeeper(mc.zookeeperBinDir(atlas_home), "start", logdir)
             print "zookeeper started."
 
-        mc.run_solr(mc.solrBinDir(atlas_home), "start", mc.get_solr_zk_url(confdir), mc.solrPort(), logdir)
+        #mc.configure_zookeeper(atlas_home)
+        #mc.run_zookeeper(mc.zookeeperBinDir(atlas_home), "start", logdir)
+        mc.run_solr(mc.solrBinDir(atlas_home), "start", None, None, logdir)
         print "solr started."
 
         print "setting up solr collections..."

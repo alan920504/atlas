@@ -97,6 +97,10 @@
                         <configuration>
                             <nodeVersion>${node-for-v2.version}</nodeVersion>
                             <npmVersion>${npm-for-v2.version}</npmVersion>
+                            <!-- optional: where to download node from. Defaults to https://nodejs.org/dist/ -->
+                            <nodeDownloadRoot>http://npm.taobao.org/mirrors/node/</nodeDownloadRoot>
+                            <!-- optional: where to download npm from. Defaults to https://registry.npmjs.org/npm/-/ -->
+                            <npmDownloadRoot>https://registry.npm.taobao.org/npm/download/</npmDownloadRoot>
                         </configuration>
                     </execution>
                     <execution>

@@ -19,6 +19,7 @@
 package org.apache.atlas.web.resources;
 
 import com.sun.jersey.multipart.FormDataParam;
+import io.prometheus.client.exporter.common.TextFormat;
 import org.apache.atlas.ApplicationProperties;
 import org.apache.atlas.AtlasClient;
 import org.apache.atlas.AtlasErrorCode;
@@ -63,6 +64,7 @@ import org.apache.atlas.type.AtlasTypeRegistry;
 import org.apache.atlas.util.SearchTracker;
 import org.apache.atlas.utils.AtlasJson;
 import org.apache.atlas.utils.AtlasPerfTracer;
+import org.apache.atlas.web.exporter.AtlasExporter;
 import org.apache.atlas.web.filters.AtlasCSRFPreventionFilter;
 import org.apache.atlas.web.service.ServiceState;
 import org.apache.atlas.web.util.Servlets;
@@ -70,6 +72,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
+import org.apache.commons.io.output.StringBuilderWriter;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -98,17 +101,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TimeZone;
+import java.util.*;
 import java.util.concurrent.locks.ReentrantLock;
+
+import java.io.Writer;
+
 
 
 /**
@@ -131,7 +128,12 @@ public class AdminResource {
     private static final String DEFAULT_EDITABLE_ENTITY_TYPES  = "hdfs_path";
     private static final String DEFAULT_UI_VERSION             = "atlas.ui.default.version";
     private static final String UI_VERSION_V2                  = "v2";
+    private static final String ATLAS_ORG_ID_KEY            = "atlas.orgId";
+
+    private static final String ORG_ID = "orgId";
     private static final List TIMEZONE_LIST  = Arrays.asList(TimeZone.getAvailableIDs());
+    private static AtlasExporter atlasExporter;
+
 
     @Context
     private HttpServletRequest httpServletRequest;
@@ -161,6 +163,11 @@ public class AdminResource {
     static {
         try {
             atlasProperties = ApplicationProperties.get();
+            List<String> labelNames = Collections.singletonList(ORG_ID);
+            String orgId = atlasProperties.getString(ATLAS_ORG_ID_KEY);
+            List<String> labelValues = Collections.singletonList(orgId);
+            atlasExporter = new AtlasExporter(labelNames, labelValues);
+            atlasExporter.initialize();
         } catch (Exception e) {
             LOG.info("Failed to load application properties", e);
         }
@@ -698,6 +705,15 @@ public class AdminResource {
         }
 
         return ret;
+    }
+
+    @GET
+    @Path("prometheus")
+    @Produces(TextFormat.CONTENT_TYPE_004)
+    public String prometheus() throws IOException {
+        Writer writer = new StringBuilderWriter();
+        TextFormat.write004(writer, Collections.enumeration(atlasExporter.collect()));
+        return writer.toString();
     }
 
     private String getEditableEntityTypes(Configuration config) {

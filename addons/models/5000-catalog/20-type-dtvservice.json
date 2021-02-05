@@ -1,0 +1,64 @@
+{
+  "enumDefs": [],
+  "structDefs": [],
+  "classificationDefs": [
+
+  ],
+  "entityDefs": [ {
+    "name": "DtvService",
+    "superTypes": [
+      "DataSet"
+    ],
+    "typeVersion": "1.0",
+    "attributeDefs": [
+      {
+        "name": "id",
+        "typeName": "string",
+        "cardinality": "SINGLE",
+        "isIndexable": false,
+        "isOptional": false
+      },
+      {
+        "name": "description",
+        "typeName": "string",
+        "cardinality": "SINGLE",
+        "isIndexable": true,
+        "isOptional": true
+      },
+      {
+        "name": "odataNamespace",
+        "typeName": "string",
+        "cardinality": "SINGLE",
+        "isIndexable": true,
+        "isOptional": false
+      },
+      {
+        "name": "host",
+        "typeName": "string",
+        "cardinality": "SINGLE",
+        "isIndexable": true,
+        "isOptional": false
+      },{
+        "name": "metadataEntityField",
+        "typeName": "string",
+        "cardinality": "SINGLE",
+        "isIndexable": false,
+        "isOptional": true
+      },{
+        "name": "odataSelectReplaceField",
+        "typeName": "string",
+        "cardinality": "SINGLE",
+        "isIndexable": false,
+        "isOptional": true
+      },
+      {
+        "name": "extraParams",
+        "typeName": "array<string>",
+        "cardinality": "LIST",
+        "isIndexable": false,
+        "isOptional": true
+      }
+    ]
+  }],
+  "relationshipDefs": []
+}

@@ -69,7 +69,8 @@ def main():
     # stop solr
     if mc.is_solr_local(confdir):
 
-        mc.run_solr(mc.solrBinDir(atlas_home), "stop", None, mc.solrPort(), None, True)
+        mc.run_solr(mc.solrBinDir(atlas_home), "stop", None, None, None, True)
+        #mc.run_zookeeper(mc.zookeeperBinDir(atlas_home), "stop")
 
     if mc.is_cassandra_local(confdir):
         mc.run_zookeeper(mc.zookeeperBinDir(atlas_home), "stop")

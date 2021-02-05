@@ -118,7 +118,7 @@
    <dynamicField name="*_ss" type="string"  indexed="true"  stored="true" multiValued="true"/>
    <dynamicField name="*_l"  type="long"   indexed="true"  stored="true"/>
    <dynamicField name="*_ls" type="long"   indexed="true"  stored="true"  multiValued="true"/>
-   <dynamicField name="*_t"  type="text_general"    indexed="true"  stored="true"/>
+   <dynamicField name="*_t"  type="text_ik"    indexed="true"  stored="true"/>
    <dynamicField name="*_txt" type="text_general"   indexed="true"  stored="true" multiValued="true"/>
    <dynamicField name="*_en"  type="text_en"    indexed="true"  stored="true" multiValued="true"/>
    <dynamicField name="*_b"  type="boolean" indexed="true" stored="true"/>
@@ -531,4 +531,23 @@
     <field name="ttl"  type="string" indexed="true" stored="true" />
     <field name="expire_at" type="date" indexed="true" stored="true" />
     <field name="timestamp" type="date" indexed="true" stored="true" />
+    <!-- IKAnalyzer-->
+    <fieldType name="text_ik" class="solr.TextField">
+        <analyzer type="index">
+            <tokenizer class="org.wltea.analyzer.lucene.IKTokenizerFactory" useSmart="false" enable_lowercase="false" conf="ik.conf"/>
+            <filter class="solr.WordDelimiterGraphFilterFactory"
+                    preserveOriginal="0" splitOnNumerics="1" splitOnCaseChange="1"
+                    catenateWords="0" catenateNumbers="0" catenateAll="0"
+                    generateWordParts="1" generateNumberParts="1" stemEnglishPossessive="1"  />
+            <filter class="solr.LowerCaseFilterFactory"/>
+        </analyzer>
+        <analyzer type="query">
+            <tokenizer class="org.wltea.analyzer.lucene.IKTokenizerFactory" useSmart="true" enable_lowercase="false" conf="ik.conf"/>
+            <filter class="solr.WordDelimiterGraphFilterFactory"
+                    preserveOriginal="0" splitOnNumerics="1" splitOnCaseChange="1"
+                    catenateWords="0" catenateNumbers="0" catenateAll="0"
+                    generateWordParts="1" generateNumberParts="1" stemEnglishPossessive="1"  />
+            <filter class="solr.LowerCaseFilterFactory"/>
+        </analyzer>
+    </fieldType>
 </schema>

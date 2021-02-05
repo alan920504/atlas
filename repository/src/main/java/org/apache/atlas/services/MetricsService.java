@@ -188,7 +188,7 @@ public class MetricsService {
         String indexQuery = indexSearchPrefix + "\"" + ENTITY_TYPE_PROPERTY_KEY + "\" : (%s)" + AND_STR +
                 indexSearchPrefix + "\"" + STATE_PROPERTY_KEY       + "\" : (%s)";
 
-        indexQuery = String.format(indexQuery, typeName, status.name());
+        indexQuery = String.format(indexQuery, "\"" + typeName + "\"", status.name());
 
         try {
             ret = atlasGraph.indexQuery(VERTEX_INDEX, indexQuery).vertexTotals();

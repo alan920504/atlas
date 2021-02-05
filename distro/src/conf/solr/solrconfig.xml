@@ -35,7 +35,61 @@
        that you fully re-index after changing this setting as it can
        affect both how text is indexed and queried.
   -->
-  <luceneMatchVersion>5.0.0</luceneMatchVersion>
+  <luceneMatchVersion>7.5.0</luceneMatchVersion>
+
+  <!-- <lib/> directives can be used to instruct Solr to load any Jars
+       identified and use them to resolve any "plugins" specified in
+       your solrconfigbak.xml or schema.xml (ie: Analyzers, Request
+       Handlers, etc...).
+
+       All directories and paths are resolved relative to the
+       instanceDir.
+
+       Please note that <lib/> directives are processed in the order
+       that they appear in your solrconfigbak.xml file, and are "stacked"
+       on top of each other when building a ClassLoader - so if you have
+       plugin jars with dependencies on other jars, the "lower level"
+       dependency jars should be loaded first.
+
+       If a "./lib" directory exists in your instanceDir, all files
+       found in it are included as if you had used the following
+       syntax...
+
+              <lib dir="./lib" />
+    -->
+
+  <!-- A 'dir' option by itself adds any files found in the directory
+       to the classpath, this is useful for including all jars in a
+       directory.
+
+       When a 'regex' is specified in addition to a 'dir', only the
+       files in that directory which completely match the regex
+       (anchored on both ends) will be included.
+
+       If a 'dir' option (with or without a regex) is used and nothing
+       is found that matches, a warning will be logged.
+
+       The examples below can be used to load some solr-contribs along
+       with their external dependencies.
+    -->
+  <lib dir="${solr.install.dir:../../../..}/contrib/extraction/lib" regex=".*\.jar" />
+  <lib dir="${solr.install.dir:../../../..}/dist/" regex="solr-cell-\d.*\.jar" />
+
+  <lib dir="${solr.install.dir:../../../..}/contrib/clustering/lib/" regex=".*\.jar" />
+  <lib dir="${solr.install.dir:../../../..}/dist/" regex="solr-clustering-\d.*\.jar" />
+
+  <lib dir="${solr.install.dir:../../../..}/contrib/langid/lib/" regex=".*\.jar" />
+  <lib dir="${solr.install.dir:../../../..}/dist/" regex="solr-langid-\d.*\.jar" />
+
+  <lib dir="${solr.install.dir:../../../..}/contrib/velocity/lib" regex=".*\.jar" />
+  <lib dir="${solr.install.dir:../../../..}/dist/" regex="solr-velocity-\d.*\.jar" />
+  <!-- an exact 'path' can be used instead of a 'dir' to specify a
+       specific jar file.  This will cause a serious error to be logged
+       if it can't be loaded.
+    -->
+  <!--
+     <lib path="../a-jar-that-does-not-exist.jar" />
+  -->
 
   <!-- Data Directory
 
@@ -61,23 +115,8 @@
        solr.RAMDirectoryFactory is memory based, not
        persistent, and doesn't work with replication.
     -->
-  <directoryFactory name="DirectoryFactory" 
-                    class="${solr.directoryFactory:solr.NRTCachingDirectoryFactory}">
-
-      <!-- These will be used if you are using the solr.HdfsDirectoryFactory,
-         otherwise they will be ignored. If you don't plan on using hdfs,
-         you can safely remove this section. -->
-      <!-- The root directory that collection data should be written to. -->
-      <str name="solr.hdfs.home">${solr.hdfs.home:}</str>
-      <!-- The hadoop configuration files to use for the hdfs client. -->
-      <str name="solr.hdfs.confdir">${solr.hdfs.confdir:}</str>
-      <!-- Enable/Disable the hdfs cache. -->
-      <str name="solr.hdfs.blockcache.enabled">${solr.hdfs.blockcache.enabled:true}</str>
-      <!-- Enable/Disable using one global cache for all SolrCores.
-           The settings used will be from the first HdfsDirectoryFactory created. -->
-      <str name="solr.hdfs.blockcache.global">${solr.hdfs.blockcache.global:true}</str>
-
-  </directoryFactory> 
+  <directoryFactory name="DirectoryFactory"
+                    class="${solr.directoryFactory:solr.NRTCachingDirectoryFactory}"/>
 
   <!-- The CodecFactory for defining the format of the inverted index.
        The default implementation is SchemaCodecFactory, which is the official Lucene
@@ -90,42 +129,59 @@
   -->
   <codecFactory class="solr.SchemaCodecFactory"/>
 
-
-  <!-- To enable dynamic schema REST APIs, use the following for <schemaFactory>:
-
-       <schemaFactory class="ManagedIndexSchemaFactory">
-         <bool name="mutable">true</bool>
-         <str name="managedSchemaResourceName">managed-schema</str>
-       </schemaFactory>
-
-       When ManagedIndexSchemaFactory is specified, Solr will load the schema from
-       he resource named in 'managedSchemaResourceName', rather than from schema.xml.
-       Note that the managed schema resource CANNOT be named schema.xml.  If the managed
-       schema does not exist, Solr will create it after reading schema.xml, then rename
-       'schema.xml' to 'schema.xml.bak'.
-
-       Do NOT hand edit the managed schema - external modifications will be ignored and
-       overwritten as a result of schema modification REST API calls.
-
-       When ManagedIndexSchemaFactory is specified with mutable = true, schema
-       modification REST API calls will be allowed; otherwise, error responses will be
-       sent back for these requests.
-  <schemaFactory class="ClassicIndexSchemaFactory"/>
-  -->
-
-  <schemaFactory class="ManagedIndexSchemaFactory">
-         <bool name="mutable">true</bool>
-         <str name="managedSchemaResourceName">managed-schema</str>
-  </schemaFactory>
-
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
        Index Config - These settings control low-level behavior of indexing
        Most example settings here show the default value, but are commented
        out, to more easily see where customizations have been made.
-       
+
        Note: This replaces <indexDefaults> and <mainIndex> from older versions
        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <indexConfig>
+    <!-- maxFieldLength was removed in 4.0. To get similar behavior, include a
+         LimitTokenCountFilterFactory in your fieldType definition. E.g.
+     <filter class="solr.LimitTokenCountFilterFactory" maxTokenCount="10000"/>
+    -->
+    <!-- Maximum time to wait for a write lock (ms) for an IndexWriter. Default: 1000 -->
+    <!-- <writeLockTimeout>1000</writeLockTimeout>  -->
+
+    <!-- Expert: Enabling compound file will use less files for the index,
+         using fewer file descriptors on the expense of performance decrease.
+         Default in Lucene is "true". Default in Solr is "false" (since 3.6) -->
+    <!-- <useCompoundFile>false</useCompoundFile> -->
+
+    <!-- ramBufferSizeMB sets the amount of RAM that may be used by Lucene
+         indexing for buffering added documents and deletions before they are
+         flushed to the Directory.
+         maxBufferedDocs sets a limit on the number of documents buffered
+         before flushing.
+         If both ramBufferSizeMB and maxBufferedDocs is set, then
+         Lucene will flush based on whichever limit is hit first.  -->
+    <!-- <ramBufferSizeMB>100</ramBufferSizeMB> -->
+    <!-- <maxBufferedDocs>1000</maxBufferedDocs> -->
+
+    <!-- Expert: Merge Policy
+         The Merge Policy in Lucene controls how merging of segments is done.
+         The default since Solr/Lucene 3.3 is TieredMergePolicy.
+         The default since Lucene 2.3 was the LogByteSizeMergePolicy,
+         Even older versions of Lucene used LogDocMergePolicy.
+      -->
+    <!--
+        <mergePolicyFactory class="org.apache.solr.index.TieredMergePolicyFactory">
+          <int name="maxMergeAtOnce">10</int>
+          <int name="segmentsPerTier">10</int>
+          <double name="noCFSRatio">0.1</double>
+        </mergePolicyFactory>
+      -->
+
+    <!-- Expert: Merge Scheduler
+         The Merge Scheduler in Lucene controls how merges are
+         performed.  The ConcurrentMergeScheduler (Lucene 2.3 default)
+         can perform merges in the background using separate threads.
+         The SerialMergeScheduler (Lucene 2.2 default) does not.
+     -->
+    <!--
+       <mergeScheduler class="org.apache.lucene.index.ConcurrentMergeScheduler"/>
+       -->
 
     <!-- LockFactory 
 
@@ -146,7 +202,37 @@
          More details on the nuances of each LockFactory...
          http://wiki.apache.org/lucene-java/AvailableLockFactories
     -->
-    <lockType>${solr.lock.type:native}</lockType>
+    <lockType>${solr.lock.type:single}</lockType>
+
+    <!-- Commit Deletion Policy
+         Custom deletion policies can be specified here. The class must
+         implement org.apache.lucene.index.IndexDeletionPolicy.
+
+         The default Solr IndexDeletionPolicy implementation supports
+         deleting index commit points on number of commits, age of
+         commit point and optimized status.
+
+         The latest commit point should always be preserved regardless
+         of the criteria.
+    -->
+    <!--
+    <deletionPolicy class="solr.SolrDeletionPolicy">
+    -->
+    <!-- The number of commit points to be kept -->
+    <!-- <str name="maxCommitsToKeep">1</str> -->
+    <!-- The number of optimized commit points to be kept -->
+    <!-- <str name="maxOptimizedCommitsToKeep">0</str> -->
+    <!--
+        Delete all commit points once they have reached the given age.
+        Supports DateMathParser syntax e.g.
+      -->
+    <!--
+       <str name="maxCommitAge">30MINUTES</str>
+       <str name="maxCommitAge">1DAY</str>
+    -->
+    <!--
+    </deletionPolicy>
+    -->
 
     <!-- Lucene Infostream
        
@@ -190,6 +276,7 @@
                 solr data directory.  --> 
     <updateLog>
       <str name="dir">${solr.ulog.dir:}</str>
+      <int name="numVersionBuckets">${solr.ulog.numVersionBuckets:65536}</int>
     </updateLog>
  
     <!-- AutoCommit
@@ -213,10 +300,10 @@
          If the updateLog is enabled, then it's highly recommended to
          have some sort of hard autoCommit to limit the log size.
       -->
-     <autoCommit> 
-       <maxTime>${solr.autoCommit.maxTime:15000}</maxTime> 
-       <openSearcher>false</openSearcher> 
-     </autoCommit>
+    <autoCommit>
+      <maxTime>${solr.autoCommit.maxTime:15000}</maxTime>
+      <openSearcher>false</openSearcher>
+    </autoCommit>
 
     <!-- softAutoCommit is like autoCommit except it causes a
          'soft' commit which only ensures that changes are visible
@@ -349,17 +436,6 @@
       -->
     <useColdSearcher>false</useColdSearcher>
 
-    <!-- Max Warming Searchers
-         
-         Maximum number of searchers that may be warming in the
-         background concurrently.  An error is returned if this limit
-         is exceeded.
-
-         Recommend values of 1-2 for read-only slaves, higher for
-         masters w/o cache warming.
-      -->
-    <maxWarmingSearchers>2</maxWarmingSearchers>
-
   </query>
 
 
@@ -382,7 +458,7 @@
        handleSelect="true" is not recommended for new users, but is the default
        for backwards compatibility
     -->
-  <requestDispatcher handleSelect="false" >
+  <requestDispatcher>
     <!-- Request Parsing
 
          These settings indicate how Solr Requests may be parsed, and

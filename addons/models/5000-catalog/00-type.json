@@ -1,0 +1,44 @@
+{
+	"enumDefs": [],
+	"structDefs": [],
+	"classificationDefs": [
+	],
+	"entityDefs": [{
+		"name": "FileRecordTemplate",
+		"superTypes": [
+			"DataSet"
+		],
+		"typeVersion": "1.0",
+		"attributeDefs": [
+			{
+				"name": "id",
+				"typeName": "string",
+				"cardinality": "SINGLE",
+				"isIndexable": false,
+				"isOptional": false
+			},
+			{
+				"name": "description",
+				"typeName": "string",
+				"cardinality": "SINGLE",
+				"isIndexable": true,
+				"isOptional": true
+			},
+			{
+				"name": "columns",
+				"typeName": "array<map<string,string>>",
+				"cardinality": "LIST",
+				"isIndexable": false,
+				"isOptional": false
+			},
+			{
+				"name": "createdBy",
+				"typeName": "string",
+				"cardinality": "SINGLE",
+				"isIndexable": false,
+				"isOptional": false
+			}
+		]
+	}],
+	"relationshipDefs": []
+}

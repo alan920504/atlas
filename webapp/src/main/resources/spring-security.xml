@@ -28,6 +28,9 @@
     <security:http pattern="/ieerror.html" security="none" />
     <security:http pattern="/api/atlas/admin/status" security="none" />
     <security:http pattern="/api/atlas/admin/metrics" security="none" />
+    <security:http pattern="/api/atlas/admin/prometheus" security="none" />
+    <security:http pattern="/api/atlas/admin/activeSearches" security="none" />
+
 
     <security:http create-session="always"
                    entry-point-ref="entryPoint">

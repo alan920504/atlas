@@ -1,0 +1,61 @@
+{
+  "patches": [
+    {
+      "id": "TYPEDEF_PATCH_9999_999",
+      "description": "Add 'createBy' and 'sourceType' attributes to Asset",
+      "action": "ADD_ATTRIBUTE",
+      "typeName": "Asset",
+      "applyToVersion": "1.2",
+      "updateToVersion": "1.3",
+      "params": null,
+      "attributeDefs": [
+        {
+          "name": "sourceType",
+          "typeName": "string",
+          "isOptional": true,
+          "cardinality": "SINGLE",
+          "valuesMinCount": 0,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true,
+          "includeInNotification": false
+        },
+        {
+          "name": "createdBy",
+          "typeName": "string",
+          "isOptional": true,
+          "cardinality": "SINGLE",
+          "valuesMinCount": 0,
+          "valuesMaxCount": 1,
+          "isUnique": false,
+          "isIndexable": true,
+          "includeInNotification": false
+        },
+        {
+          "name": "createdTime",
+          "typeName": "date",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "updatedBy",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "updatedTime",
+          "typeName": "date",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional": true,
+          "isUnique": false
+        }
+      ]
+    }
+  ]
+}

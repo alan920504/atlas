@@ -32,14 +32,14 @@
     <!-- by default configure hbase and solr with the distribution -->
     <properties>
 
-        <graph.storage.backend>hbase2</graph.storage.backend>
+        <graph.storage.backend>berkeleyje</graph.storage.backend>
         <graph.storage.properties>#Hbase
 #For standalone mode , specify localhost
 #for distributed mode, specify zookeeper quorum here
-atlas.graph.storage.hostname=
-atlas.graph.storage.hbase.regions-per-server=1
+#atlas.graph.storage.hostname=GRAPH_STORAGE_HOSTNAME
+#atlas.graph.storage.hbase.regions-per-server=1
 atlas.graph.storage.lock.wait-time=10000
-
+atlas.graph.storage.directory=GRAPH_DIRECTORY
 #In order to use Cassandra as a backend, comment out the hbase specific properties above, and uncomment the
 #the following properties
 #atlas.graph.storage.clustername=
@@ -50,7 +50,7 @@ atlas.graph.storage.lock.wait-time=10000
         <graph.index.properties>#Solr
 #Solr cloud mode properties
 atlas.graph.index.search.solr.mode=cloud
-atlas.graph.index.search.solr.zookeeper-url=
+atlas.graph.index.search.solr.zookeeper-url=localhost:2181
 atlas.graph.index.search.solr.zookeeper-connect-timeout=60000
 atlas.graph.index.search.solr.zookeeper-session-timeout=60000
 atlas.graph.index.search.solr.wait-searcher=true
@@ -68,15 +68,22 @@ atlas.graph.index.search.solr.wait-searcher=true
 #
 # Alternatively, the JanusGraph documentation provides some tips on how to secure Elasticsearch without additional
 # plugins: https://docs.janusgraph.org/latest/elasticsearch.html
-#atlas.graph.index.search.hostname=localhost
+#atlas.graph.index.search.hostname=GRAPH_INDEX_HOSTNAME
+#atlas.graph.index.search.elasticsearch.ssl.enabled=SSL_ENABLE
+#atlas.graph.index.search.elasticsearch.ssl.trust-all-certificates=SSL_TRUST_ALL
+#atlas.graph.index.search.elasticsearch.http.auth.type=basic
+#atlas.graph.index.search.elasticsearch.http.auth.basic.username=ES_USERNAME
+#atlas.graph.index.search.elasticsearch.http.auth.basic.password=ES_PASSWORD
 #atlas.graph.index.search.elasticsearch.client-only=true
+#atlas.graph.index.search.map-name=false
+#atlas.graph.index.search.index-name=ATLAS_INDEX_NAME
         </graph.index.properties>
         <hbase.embedded>false</hbase.embedded>
-        <solr.embedded>false</solr.embedded>
+        <solr.embedded>true</solr.embedded>
         <cassandra.embedded>false</cassandra.embedded>
         <elasticsearch.managed>false</elasticsearch.managed>
 
-        <entity.repository.properties>atlas.EntityAuditRepository.impl=org.apache.atlas.repository.audit.HBaseBasedAuditRepository</entity.repository.properties>
+        <entity.repository.properties>atlas.EntityAuditRepository.impl=org.apache.atlas.repository.audit.InMemoryEntityAuditRepository</entity.repository.properties>
     </properties>
 
     <profiles>
@@ -126,18 +133,18 @@ atlas.graph.index.search.solr.wait-searcher=true
                                 <configuration>
                                     <skipAssembly>false</skipAssembly>
                                     <descriptors>
-                                        <descriptor>src/main/assemblies/atlas-hbase-hook-package.xml</descriptor>
+                                        <!--<descriptor>src/main/assemblies/atlas-hbase-hook-package.xml</descriptor>
                                         <descriptor>src/main/assemblies/atlas-hive-hook-package.xml</descriptor>
                                         <descriptor>src/main/assemblies/atlas-impala-hook-package.xml</descriptor>
                                         <descriptor>src/main/assemblies/atlas-falcon-hook-package.xml</descriptor>
                                         <descriptor>src/main/assemblies/atlas-sqoop-hook-package.xml</descriptor>
                                         <descriptor>src/main/assemblies/atlas-storm-hook-package.xml</descriptor>
-                                        <descriptor>src/main/assemblies/atlas-kafka-hook-package.xml</descriptor>
+                                        <descriptor>src/main/assemblies/atlas-kafka-hook-package.xml</descriptor>-->
                                         <descriptor>src/main/assemblies/atlas-server-package.xml</descriptor>
-                                        <descriptor>src/main/assemblies/standalone-package.xml</descriptor>
-                                        <descriptor>src/main/assemblies/src-package.xml</descriptor>
+<!--                                        <descriptor>src/main/assemblies/standalone-package.xml</descriptor>-->
+<!--                                        <descriptor>src/main/assemblies/src-package.xml</descriptor>-->
                                         <!--<descriptor>src/main/assemblies/migration-exporter.xml</descriptor>-->
-                                        <descriptor>src/main/assemblies/classification-updater.xml</descriptor>
+<!--                                        <descriptor>src/main/assemblies/classification-updater.xml</descriptor>-->
                                     </descriptors>
                                     <finalName>apache-atlas-${project.version}</finalName>
                                     <tarLongFileMode>gnu</tarLongFileMode>
@@ -148,6 +155,85 @@ atlas.graph.index.search.solr.wait-searcher=true
                 </plugins>
             </build>
         </profile>
+        <!-- profile to package and configure embedded hbase and solr with the distribution -->
+        <profile>
+            <id>embedded-solr</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <graph.storage.backend>berkeleyje</graph.storage.backend>
+                <graph.storage.properties>#Hbase
+#atlas.graph.storage.hbase.regions-per-server=1
+atlas.graph.storage.lock.wait-time=30000
+atlas.graph.storage.directory=STORAGE_DIR
+#In order to use Cassandra as a backend, comment out the hbase specific properties above, and uncomment the
+#the following properties
+#atlas.graph.storage.clustername=
+#atlas.graph.storage.port=
+
+                </graph.storage.properties>
+                <graph.index.properties>#Solr
+#Solr cloud mode properties
+#atlas.graph.index.search.solr.mode=cloud
+#atlas.graph.index.search.solr.zookeeper-url=localhost:2181
+#atlas.graph.index.search.solr.zookeeper-connect-timeout=60000
+#atlas.graph.index.search.solr.zookeeper-session-timeout=60000
+#atlas.graph.index.search.solr.wait-searcher=true
+
+#Solr http mode properties
+atlas.graph.index.search.solr.mode=http
+atlas.graph.index.search.solr.http-urls=http://localhost:8983/solr
+                </graph.index.properties>
+
+                <cassandra.embedded>false</cassandra.embedded>
+                <hbase.embedded>false</hbase.embedded>
+                <solr.embedded>true</solr.embedded>
+                <entity.repository.properties>atlas.EntityAuditRepository.impl=org.apache.atlas.repository.audit.NoopEntityAuditRepository</entity.repository.properties>
+
+
+                <!--                <hbase.dir>${project.build.directory}/hbase</hbase.dir>-->
+<!--                <hbase.tar>https://archive.apache.org/dist/hbase/${hbase.version}/hbase-${hbase.version}-bin.tar.gz</hbase.tar>-->
+<!--                <hbase.folder>hbase-${hbase.version}</hbase.folder>-->
+
+                <solr.dir>${project.build.directory}/solr</solr.dir>
+                <solr.tar>ftp://ftpread:Tepogwnm@10.21.168.13/eos_data/solr/${solr.version}/solr-${solr.version}.tgz</solr.tar>
+                <solr.folder>solr-${solr.version}</solr.folder>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <version>1.7</version>
+                        <executions>
+                            <!-- package solr -->
+                            <execution>
+                                <id>solr</id>
+                                <phase>generate-resources</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <target name="Download SOLR">
+                                        <mkdir dir="${solr.dir}" />
+                                        <mkdir dir="${project.basedir}/solr" />
+                                        <get src="${solr.tar}" dest="${project.basedir}/solr/${solr.folder}.tgz" usetimestamp="true" verbose="true" skipexisting="true" />
+                                        <untar src="${project.basedir}/solr/${solr.folder}.tgz" dest="${project.build.directory}/solr.temp" compression="gzip" />
+                                        <copy todir="${solr.dir}">
+                                            <fileset dir="${project.build.directory}/solr.temp/${solr.folder}">
+                                                <include name="**/*" />
+                                            </fileset>
+                                        </copy>
+                                    </target>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
 
         <!-- profile to configure berkeley and elasticsearch with the distribution -->
         <profile>
@@ -158,22 +244,23 @@ atlas.graph.index.search.solr.wait-searcher=true
             <properties>
                 <graph.storage.backend>berkeleyje</graph.storage.backend>
                 <graph.storage.properties>#Berkeley
-atlas.graph.storage.directory=${sys:atlas.home}/data/berkeley
+atlas.graph.storage.directory=STORAGE_DIR
 atlas.graph.storage.lock.clean-expired=true
 atlas.graph.storage.lock.expiry-time=500
 atlas.graph.storage.lock.wait-time=300
                 </graph.storage.properties>
                 <graph.index.backend>elasticsearch</graph.index.backend>
                 <graph.index.properties>#ElasticSearch
-atlas.graph.index.search.hostname=localhost
+atlas.graph.index.hostname=SERVICE_IP
 atlas.graph.index.search.elasticsearch.client-only=true
+atlas.graph.index.search.map-name=false
                 </graph.index.properties>
 		        <entity.repository.properties>atlas.EntityAuditRepository.impl=org.apache.atlas.repository.audit.NoopEntityAuditRepository</entity.repository.properties>
 
                 <elasticsearch.managed>true</elasticsearch.managed>
                 <cassandra.embedded>false</cassandra.embedded>
                 <elasticsearch.dir>${project.build.directory}/elasticsearch</elasticsearch.dir>
-                <elasticsearch.tar>https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${elasticsearch.version}.tar.gz</elasticsearch.tar>
+                <elasticsearch.tar>https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.6.2-linux-x86_64.tar.gz</elasticsearch.tar>
                 <elasticsearch.folder>elasticsearch-${elasticsearch.version}</elasticsearch.folder>
 
             </properties>
@@ -413,6 +500,7 @@ atlas.graph.index.search.solr.wait-searcher=true
                 <filtering>true</filtering>
                 <includes>
                     <include>**/*.py</include>
+                    <include>**/*.sh</include>
                 </includes>
                 <targetPath>bin</targetPath>
             </resource>

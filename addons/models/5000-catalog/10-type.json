@@ -1,0 +1,152 @@
+{
+  "enumDefs": [ {
+            "name": "TestFileTypeEnum",
+            "typeVersion": "1.0",
+            "elementDefs": [
+                {
+                    "ordinal": 0,
+                    "value": "Tracelog File"
+                },
+                {
+                    "ordinal": 1,
+                    "value": "Soe File"
+                },
+                {
+                    "ordinal": 2,
+                    "value": "Structured Record File"
+                },
+                {
+                    "ordinal": 3,
+                    "value": "Unstructured Record File"
+                },
+                {
+                    "ordinal": 4,
+                    "value": "Other"
+                }
+            ]
+        }],
+  "structDefs": [],
+  "classificationDefs": [],
+  "entityDefs": [
+    {
+      "name": "FileSet",
+      "superTypes": [
+        "DataSet"
+      ],
+      "typeVersion": "1.0",
+      "attributeDefs": [
+        {
+          "name": "id",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional": false
+        },
+        {                
+          "name": "fileType",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional": false
+        },
+        {
+          "name": "description",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional": true
+        },
+        {
+          "name": "filePattern",
+          "typeName": "array<map<string,string>>",
+          "cardinality": "LIST",
+          "isIndexable": true,
+          "isOptional": false
+        },
+        {
+          "name": "createdBy",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": false
+        }
+      ]
+    },{
+		"name": "File",
+		"superTypes": [
+			"DataSet"
+		],
+		"typeVersion": "1.0",
+		"attributeDefs": [
+			{
+				"name": "id",
+				"typeName": "string",
+				"cardinality": "SINGLE",
+				"isIndexable": true,
+				"isOptional": false
+			},
+			{
+				"name": "fileType",
+				"typeName": "string",
+				"cardinality": "SINGLE",
+				"isIndexable": true,
+				"isOptional": false
+			},
+			{
+				"name": "storageType",
+				"typeName": "string",
+				"cardinality": "SINGLE",
+				"isIndexable": true,
+				"isOptional": false
+			},
+			{
+				"name": "description",
+				"typeName": "string",
+				"cardinality": "SINGLE",
+				"isIndexable": true,
+				"isOptional": true
+			},
+			{
+				"name": "createdBy",
+				"typeName": "string",
+				"cardinality": "SINGLE",
+				"isIndexable": false,
+				"isOptional": false
+			},
+			{
+				"name": "sourceName",
+				"typeName": "string",
+				"cardinality": "SINGLE",
+				"isIndexable": false,
+				"isOptional": false
+			},
+			{
+				"name": "sourceId",
+				"typeName": "string",
+				"cardinality": "SINGLE",
+				"isIndexable": false,
+				"isOptional": false
+			}
+		]
+	}
+	
+  ],
+  "relationshipDefs": [{
+      "endDef1": {
+        "cardinality": "SET",
+        "type": "FileRecordTemplate",
+        "isContainer" : true,
+        "name": "relatedFileSets"
+      },
+      "endDef2": {
+        "cardinality": "SINGLE",
+        "type": "FileSet",
+        "isContainer" : false,
+        "name":"relatedTemplate"
+      },
+      "category": "RELATIONSHIP",
+      "relationshipCategory": "AGGREGATION",
+      "propagateTags": "NONE",
+      "name": "RelationFileSetAndTemplate"
+    }]
+}
