@@ -609,7 +609,7 @@
                 <graphdb.backend.impl>org.apache.atlas.repository.graphdb.janus.AtlasJanusGraphDatabase</graphdb.backend.impl>
                 <graph.index.backend>solr</graph.index.backend>
                 <tests.solr.embedded>true</tests.solr.embedded>
-                <distro.exclude.packages>WEB-INF/lib/je-*.jar,WEB-INF/lib/solr-test-framework-*.jar, WEB-INF/lib/jts-*.jar,WEB-INF/lib/logback-*.jar,WEB-INF/lib/dom4j-*.jar</distro.exclude.packages>
+                <distro.exclude.packages>WEB-INF/lib/solr-test-framework-*.jar, WEB-INF/lib/jts-*.jar,WEB-INF/lib/logback-*.jar,WEB-INF/lib/dom4j-*.jar</distro.exclude.packages>
             </properties>
         </profile>
 
@@ -629,7 +629,7 @@
                 <graphdb.backend.impl>org.apache.atlas.repository.graphdb.janus.AtlasJanusGraphDatabase</graphdb.backend.impl>
                 <graph.index.backend>solr</graph.index.backend>
                 <tests.solr.embedded>true</tests.solr.embedded>
-                <distro.exclude.packages>WEB-INF/lib/je-*.jar,WEB-INF/lib/solr-test-framework-*.jar, WEB-INF/lib/jts-*.jar,WEB-INF/lib/logback-*.jar,WEB-INF/lib/dom4j-*.jar</distro.exclude.packages>
+                <distro.exclude.packages>WEB-INF/lib/solr-test-framework-*.jar, WEB-INF/lib/jts-*.jar,WEB-INF/lib/logback-*.jar,WEB-INF/lib/dom4j-*.jar</distro.exclude.packages>
             </properties>
         </profile>
 
@@ -770,7 +770,7 @@
 
     <modules>
         <module>build-tools</module>
-        <module>test-tools</module>
+<!--        <module>test-tools</module>-->
 
         <module>intg</module>
         <module>common</module>
@@ -783,116 +783,115 @@
         <module>dashboardv2</module>
         <module>dashboardv3</module>
         <module>webapp</module>
-        <module>docs</module>
+<!--        <module>docs</module>-->
+<!--         <module>addons/hdfs-model</module>
+                <module>plugin-classloader</module>
+                <module>addons/hive-bridge-shim</module>
+                <module>addons/hive-bridge</module>
+                <module>addons/falcon-bridge-shim</module>
+                <module>addons/falcon-bridge</module>
+                <module>addons/sqoop-bridge-shim</module>
+                <module>addons/sqoop-bridge</module>
+                <module>addons/storm-bridge-shim</module>
+                <module>addons/storm-bridge</module>
+                <module>addons/hbase-bridge-shim</module>
+                <module>addons/hbase-bridge</module>
+                <module>addons/hbase-testing-util</module>
+                <module>addons/kafka-bridge</module>
+                <module>tools/classification-updater</module>
+                <module>addons/impala-hook-api</module>
+                <module>addons/impala-bridge-shim</module>
+                <module>addons/impala-bridge</module>-->
 
-        <module>addons/hdfs-model</module>
-        <module>plugin-classloader</module>
-        <module>addons/hive-bridge-shim</module>
-        <module>addons/hive-bridge</module>
-        <module>addons/falcon-bridge-shim</module>
-        <module>addons/falcon-bridge</module>
-        <module>addons/sqoop-bridge-shim</module>
-        <module>addons/sqoop-bridge</module>
-        <module>addons/storm-bridge-shim</module>
-        <module>addons/storm-bridge</module>
-        <module>addons/hbase-bridge-shim</module>
-        <module>addons/hbase-bridge</module>
-        <module>addons/hbase-testing-util</module>
-        <module>addons/kafka-bridge</module>
-        <module>tools/classification-updater</module>
-        <module>addons/impala-hook-api</module>
-        <module>addons/impala-bridge-shim</module>
-        <module>addons/impala-bridge</module>
+                <module>distro</module>
+            </modules>
 
-        <module>distro</module>
-    </modules>
+            <repositories>
+                <repository>
+                    <id>central</id>
+                    <url>https://repo1.maven.org/maven2</url>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <id>hortonworks.repo</id>
+                    <url>https://repo.hortonworks.com/content/repositories/releases</url>
+                    <name>Hortonworks Repo</name>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <id>apache.snapshots.repo</id>
+                    <url>https://repository.apache.org/content/groups/snapshots</url>
+                    <name>Apache Snapshots Repository</name>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <id>apache-staging</id>
+                    <url>https://repository.apache.org/content/groups/staging/</url>
+                </repository>
+                <repository>
+                    <id>default</id>
+                    <url>https://repository.apache.org/content/groups/public/</url>
+                </repository>
+                <repository>
+                    <id>java.net-Public</id>
+                    <name>Maven Java Net Snapshots and Releases</name>
+                    <url>https://maven.java.net/content/groups/public/</url>
+                </repository>
+                <repository>
+                    <id>repository.jboss.org-public</id>
+                    <name>JBoss repository</name>
+                    <url>https://repository.jboss.org/nexus/content/groups/public</url>
+                </repository>
+                <repository>
+                    <id>typesafe</id>
+                    <name>Typesafe Repository</name>
+                    <url>https://repo.typesafe.com/typesafe/releases/</url>
+                </repository>
+            </repositories>
 
-    <repositories>
-        <repository>
-            <id>central</id>
-            <url>https://repo1.maven.org/maven2</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>hortonworks.repo</id>
-            <url>https://repo.hortonworks.com/content/repositories/releases</url>
-            <name>Hortonworks Repo</name>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>apache.snapshots.repo</id>
-            <url>https://repository.apache.org/content/groups/snapshots</url>
-            <name>Apache Snapshots Repository</name>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>apache-staging</id>
-            <url>https://repository.apache.org/content/groups/staging/</url>
-        </repository>
-        <repository>
-            <id>default</id>
-            <url>https://repository.apache.org/content/groups/public/</url>
-        </repository>
-        <repository>
-            <id>java.net-Public</id>
-            <name>Maven Java Net Snapshots and Releases</name>
-            <url>https://maven.java.net/content/groups/public/</url>
-        </repository>
-        <repository>
-            <id>repository.jboss.org-public</id>
-            <name>JBoss repository</name>
-            <url>https://repository.jboss.org/nexus/content/groups/public</url>
-        </repository>
-        <repository>
-            <id>typesafe</id>
-            <name>Typesafe Repository</name>
-            <url>https://repo.typesafe.com/typesafe/releases/</url>
-        </repository>
-    </repositories>
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.antlr</groupId>
+                        <artifactId>antlr4-runtime</artifactId>
+                        <version>${antlr4.version}</version>
+                    </dependency>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.antlr</groupId>
-                <artifactId>antlr4-runtime</artifactId>
-                <version>${antlr4.version}</version>
-            </dependency>
+                    <dependency>
+                        <groupId>com.google.guava</groupId>
+                        <artifactId>guava</artifactId>
+                        <version>${guava.version}</version>
+                    </dependency>
 
-            <dependency>
-                <groupId>com.google.guava</groupId>
-                <artifactId>guava</artifactId>
-                <version>${guava.version}</version>
-            </dependency>
+                    <dependency>
+                        <groupId>org.eclipse.jetty</groupId>
+                        <artifactId>jetty-jsp</artifactId>
+                        <version>${jetty.jsp.version}</version>
+                        <exclusions>
+                            <exclusion>
+                                <groupId>javax.servlet</groupId>
+                                <artifactId>*</artifactId>
+                            </exclusion>
+                            <exclusion>
+                                <groupId>org.glassfish</groupId>
+                                <artifactId>javax.el</artifactId>
+                            </exclusion>
+                        </exclusions>
+                    </dependency>
 
-            <dependency>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-jsp</artifactId>
-                <version>${jetty.jsp.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>javax.servlet</groupId>
-                        <artifactId>*</artifactId>
-                    </exclusion>
-                    <exclusion>
+                    <dependency>
                         <groupId>org.glassfish</groupId>
                         <artifactId>javax.el</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
+                        <version>3.0.0</version>
+                    </dependency>
 
-            <dependency>
-                <groupId>org.glassfish</groupId>
-                <artifactId>javax.el</artifactId>
-                <version>3.0.0</version>
-            </dependency>
-
-            <!-- Logging -->
+                    <!-- Logging -->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
