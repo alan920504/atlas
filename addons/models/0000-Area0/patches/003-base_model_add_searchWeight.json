@@ -16,8 +16,8 @@
       "description":     "Adding search Weights",
       "action":          "UPDATE_ATTRIBUTE_METADATA",
       "typeName":        "Asset",
-      "applyToVersion":  "1.2",
-      "updateToVersion": "1.3",
+      "applyToVersion":  "1.3",
+      "updateToVersion": "1.4",
       "attributeName":   "name",
       "params": {
         "searchWeight": 10
@@ -27,8 +27,8 @@
       "description":     "Adding search Weights",
       "action":          "UPDATE_ATTRIBUTE_METADATA",
       "typeName":        "Asset",
-      "applyToVersion":  "1.3",
-      "updateToVersion": "1.4",
+      "applyToVersion":  "1.4",
+      "updateToVersion": "1.5",
       "attributeName":   "description",
       "params": {
         "searchWeight": 9
@@ -38,11 +38,66 @@
       "description":     "Adding search Weights",
       "action":          "UPDATE_ATTRIBUTE_METADATA",
       "typeName":        "Asset",
-      "applyToVersion":  "1.4",
-      "updateToVersion": "1.5",
+      "applyToVersion":  "1.5",
+      "updateToVersion": "1.6",
       "attributeName":   "owner",
       "params": {
         "searchWeight": 9
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_0000_040",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "Asset",
+      "applyToVersion":  "1.6",
+      "updateToVersion": "1.7",
+      "attributeName":   "sourceType",
+      "params": {
+        "searchWeight": 7
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_0000_041",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "Asset",
+      "applyToVersion":  "1.7",
+      "updateToVersion": "1.8",
+      "attributeName":   "createdBy",
+      "params": {
+        "searchWeight": 5
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_0000_042",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "Asset",
+      "applyToVersion":  "1.8",
+      "updateToVersion": "1.9",
+      "attributeName":   "createdTime",
+      "params": {
+        "searchWeight": 7
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_0000_043",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "Asset",
+      "applyToVersion":  "1.9",
+      "updateToVersion": "1.10",
+      "attributeName":   "updatedBy",
+      "params": {
+        "searchWeight": 5
+      }
+    }, {
+      "id":              "TYPEDEF_PATCH_0000_044",
+      "description":     "Adding search Weights",
+      "action":          "UPDATE_ATTRIBUTE_METADATA",
+      "typeName":        "Asset",
+      "applyToVersion":  "1.10",
+      "updateToVersion": "1.11",
+      "attributeName":   "updatedTime",
+      "params": {
+        "searchWeight": 7
       }
     }, {
       "id":              "TYPEDEF_PATCH_0000_037",

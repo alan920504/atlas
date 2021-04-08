@@ -194,8 +194,8 @@ public class GremlinQueryComposer {
         } else if (lhsI.isNumeric()) {
             rhs = parseNumber(rhs, this.context);
         }
-
         rhs = addQuotesIfNecessary(lhsI, rhs);
+
         SearchParameters.Operator op = SearchParameters.Operator.fromString(operator);
         if (op == SearchParameters.Operator.LIKE) {
             final AtlasStructType.AtlasAttribute attribute = context.getActiveEntityType().getAttribute(lhsI.getAttributeName());

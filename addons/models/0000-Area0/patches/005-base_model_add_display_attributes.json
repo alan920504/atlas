@@ -5,8 +5,8 @@
       "description": "Add displayName and userDescription to Asset",
       "action": "ADD_ATTRIBUTE",
       "typeName": "Asset",
-      "applyToVersion": "1.5",
-      "updateToVersion": "1.6",
+      "applyToVersion": "1.11",
+      "updateToVersion": "1.12",
       "params": null,
       "attributeDefs": [
         {

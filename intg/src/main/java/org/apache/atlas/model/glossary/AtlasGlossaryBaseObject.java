@@ -33,6 +33,8 @@ public abstract class AtlasGlossaryBaseObject extends AtlasBaseModelObject {
     // Core attributes
     private String qualifiedName;
     protected String name;
+    protected String nameEn;
+    protected String nameCn;
     protected String shortDescription;
     protected String longDescription;
     private Map<String, Object> additionalAttributes;
