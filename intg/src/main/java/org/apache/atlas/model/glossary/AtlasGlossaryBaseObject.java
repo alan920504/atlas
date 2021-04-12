@@ -33,11 +33,10 @@ public abstract class AtlasGlossaryBaseObject extends AtlasBaseModelObject {
     // Core attributes
     private String qualifiedName;
     protected String name;
-    protected String nameEn;
-    protected String nameCn;
     protected String shortDescription;
     protected String longDescription;
     private Map<String, Object> additionalAttributes;
+    protected Map<String, String> i18nName;
 
     // Classifications
     protected List<AtlasClassification> classifications;
@@ -105,6 +104,14 @@ public abstract class AtlasGlossaryBaseObject extends AtlasBaseModelObject {
         this.classifications = classifications;
     }
 
+    public Map<String, String> getI18nName() {
+        return i18nName;
+    }
+
+    public void setI18nName(Map<String, String> i18nName) {
+        this.i18nName = i18nName;
+    }
+
     @JsonIgnore
     public void addClassification(AtlasClassification classification) {
         List<AtlasClassification> classifications = this.classifications;
@@ -130,6 +137,7 @@ public abstract class AtlasGlossaryBaseObject extends AtlasBaseModelObject {
         AtlasGlossaryBaseObject that = (AtlasGlossaryBaseObject) o;
         return Objects.equals(qualifiedName, that.qualifiedName) &&
                 Objects.equals(name, that.name) &&
+                Objects.equals(i18nName, that.i18nName) &&
                 Objects.equals(shortDescription, that.shortDescription) &&
                 Objects.equals(longDescription, that.longDescription) &&
                 Objects.equals(additionalAttributes, that.additionalAttributes) &&
@@ -148,7 +156,8 @@ public abstract class AtlasGlossaryBaseObject extends AtlasBaseModelObject {
         sb.append(", shortDescription='").append(shortDescription).append('\'');
         sb.append(", longDescription='").append(longDescription).append('\'');
         sb.append(", classifications=").append(classifications).append('\'');
-        sb.append(", additionalAttributes=").append(additionalAttributes);
+        sb.append(", additionalAttributes=").append(additionalAttributes).append('\'');
+        sb.append(", i18nName=").append(i18nName);
 
         return sb;
     }

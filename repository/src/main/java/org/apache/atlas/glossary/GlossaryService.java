@@ -68,7 +68,7 @@ public class GlossaryService {
     private final AtlasTypeRegistry         atlasTypeRegistry;
     private final AtlasEntityChangeNotifier entityChangeNotifier;
 
-    private static final char[] invalidNameChars = { '@', '.' };
+    private static final char[] invalidNameChars = { '@'};
 
     @Inject
     public GlossaryService(DataAccess dataAccess, final AtlasRelationshipStore relationshipStore,

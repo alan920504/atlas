@@ -19,6 +19,25 @@
         }
 
       ]
+    },{
+      "id": "TYPEDEF_PATCH_0001_005",
+      "description": "Add 'i18nName' attribute to AtlasGlossary",
+      "action": "ADD_ATTRIBUTE",
+      "typeName": "AtlasGlossary",
+      "applyToVersion": "1.2",
+      "updateToVersion": "1.3",
+      "params": null,
+      "attributeDefs": [
+        {
+          "name": "i18nName",
+          "typeName": "map<string,string>",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        }
+
+      ]
     },
     {
       "id": "TYPEDEF_PATCH_0002_004",
@@ -39,6 +58,25 @@
         }
 
       ]
+    },{
+      "id": "TYPEDEF_PATCH_0002_005",
+      "description": "Add 'i18nName' attribute to AtlasGlossaryTerm",
+      "action": "ADD_ATTRIBUTE",
+      "typeName": "AtlasGlossaryTerm",
+      "applyToVersion": "1.2",
+      "updateToVersion": "1.3",
+      "params": null,
+      "attributeDefs": [
+        {
+          "name": "i18nName",
+          "typeName": "map<string,string>",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        }
+
+      ]
     },
     {
       "id": "TYPEDEF_PATCH_0003_004",
@@ -51,6 +89,25 @@
       "attributeDefs": [
         {
           "name": "additionalAttributes",
+          "typeName": "map<string,string>",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        }
+
+      ]
+    },{
+      "id": "TYPEDEF_PATCH_0003_005",
+      "description": "Add 'i18nName' attribute to AtlasGlossaryCategory",
+      "action": "ADD_ATTRIBUTE",
+      "typeName": "AtlasGlossaryCategory",
+      "applyToVersion": "1.2",
+      "updateToVersion": "1.3",
+      "params": null,
+      "attributeDefs": [
+        {
+          "name": "i18nName",
           "typeName": "map<string,string>",
           "cardinality": "SINGLE",
           "isIndexable": false,

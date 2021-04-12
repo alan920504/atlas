@@ -116,6 +116,7 @@ public class AtlasGlossaryDTO extends AbstractGlossaryDTO<AtlasGlossary> {
 
         ret.setAttribute("qualifiedName", obj.getQualifiedName());
         ret.setAttribute("name", obj.getName());
+        ret.setAttribute("i18nName", obj.getI18nName());
         ret.setAttribute("shortDescription", obj.getShortDescription());
         ret.setAttribute("longDescription", obj.getLongDescription());
         ret.setAttribute("language", obj.getLanguage());
