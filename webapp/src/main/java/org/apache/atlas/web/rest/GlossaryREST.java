@@ -36,6 +36,7 @@ import org.apache.commons.collections.MapUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -893,6 +894,23 @@ public class GlossaryREST {
         removeTermFromGlossary(termGuid, relatedObjectIds);
     }
 
+
+    /**
+     * Remove the term assignment for the given list of entity headers
+     * @param termGuid Glossary term GUID
+     * @param relatedObjectIds List of related entity IDs from which the term has to be dissociated
+     * @throws AtlasBaseException
+     * @HTTP 204 If glossary term dissociation was successful
+     * @HTTP 400 If ANY of the entity header is invalid
+     * @HTTP 404 If glossary term guid in invalid
+     */
+    @PUT
+    @Path("/terms/assignedEntities")
+    public void modifyTermOfEntities(@RequestParam("termGuid") String termGuid, @RequestParam("newTermGuid") String newTermGuid,
+                                                                       List<AtlasRelatedObjectId> relatedObjectIds) throws AtlasBaseException {
+        removeTermFromGlossary(termGuid, relatedObjectIds);
+        assignTermToEntities(newTermGuid, relatedObjectIds);
+    }
 
 
     private void removeTermFromGlossary(String termGuid, List<AtlasRelatedObjectId> relatedObjectIds) throws AtlasBaseException{
