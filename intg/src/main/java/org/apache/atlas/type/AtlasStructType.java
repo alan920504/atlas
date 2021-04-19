@@ -1019,7 +1019,7 @@ public class AtlasStructType extends AtlasType {
                 new String[] {"%", "_p"}, //titan reserved characters
         };
 
-        private static final char[] IDX_QRY_OFFENDING_CHARS = { '@', '/', ' ', '-' };
+        private static final char[] IDX_QRY_OFFENDING_CHARS = { '@', '/', ' ', '-' , '_', ':'};
         private static final char   BRACE_OPEN_CHAR         = '(';
         private static final char   BRACE_CLOSE_CHAR        = ')';
         private static final char   DOUBLE_QUOTE_CHAR       = '"';
