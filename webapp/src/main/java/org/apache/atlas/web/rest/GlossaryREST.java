@@ -898,6 +898,7 @@ public class GlossaryREST {
     /**
      * Remove the term assignment for the given list of entity headers
      * @param termGuid Glossary term GUID
+     * @param newTermGuid new Glossary term GUID
      * @param relatedObjectIds List of related entity IDs from which the term has to be dissociated
      * @throws AtlasBaseException
      * @HTTP 204 If glossary term dissociation was successful
@@ -905,8 +906,8 @@ public class GlossaryREST {
      * @HTTP 404 If glossary term guid in invalid
      */
     @PUT
-    @Path("/terms/assignedEntities")
-    public void modifyTermOfEntities(@RequestParam("termGuid") String termGuid, @RequestParam("newTermGuid") String newTermGuid,
+    @Path("/terms/{termGuid}/assignedEntities/newTerm/{newTermGuid}")
+    public void modifyTermOfEntities(@PathParam("termGuid") String termGuid, @PathParam("newTermGuid") String newTermGuid,
                                                                        List<AtlasRelatedObjectId> relatedObjectIds) throws AtlasBaseException {
         removeTermFromGlossary(termGuid, relatedObjectIds);
         assignTermToEntities(newTermGuid, relatedObjectIds);

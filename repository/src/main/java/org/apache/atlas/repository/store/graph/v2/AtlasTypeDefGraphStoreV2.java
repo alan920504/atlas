@@ -222,7 +222,7 @@ public class AtlasTypeDefGraphStoreV2 extends AtlasTypeDefGraphStore {
          *
         updateVertexProperty(vertex, Constants.TYPENAME_PROPERTY_KEY, typeDef.getName());
          */
-        updateVertexProperty(vertex, Constants.TYPEDESCRIPTION_PROPERTY_KEY, typeDef.getDescription());
+        updateVertexDescription(vertex, Constants.TYPEDESCRIPTION_PROPERTY_KEY, typeDef.getDescription());
         updateVertexProperty(vertex, Constants.TYPEVERSION_PROPERTY_KEY, typeDef.getTypeVersion());
         updateVertexProperty(vertex, Constants.TYPEOPTIONS_PROPERTY_KEY, AtlasType.toJson(typeDef.getOptions()));
 
@@ -515,6 +515,22 @@ public class AtlasTypeDefGraphStoreV2 extends AtlasTypeDefGraphStore {
             if (!StringUtils.equals(currValue, newValue)) {
                 vertex.setProperty(propertyName, newValue);
             }
+        }
+    }
+
+    /*
+     * update the given vertex property, if new value is blank, then set blank str
+     */
+    private void updateVertexDescription(AtlasVertex vertex, String propertyName, String newValue) {
+        if (StringUtils.isNotBlank(newValue)) {
+            String currValue = vertex.getProperty(propertyName, String.class);
+
+            if (!StringUtils.equals(currValue, newValue)) {
+                vertex.setProperty(propertyName, newValue);
+            }
+        } else {
+            vertex.setProperty(propertyName, "");
+
         }
     }
 
