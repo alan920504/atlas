@@ -152,7 +152,7 @@
           "valuesMaxCount":1,
           "isUnique":false,
           "isIndexable":true,
-          "includeInNotification":false,
+          "includeInNotification":true,
           "searchWeight":-1
         },
         {
@@ -163,8 +163,8 @@
           "valuesMinCount":0,
           "valuesMaxCount":1,
           "isUnique":false,
-          "isIndexable":true,
-          "includeInNotification":false,
+          "isIndexable":false,
+          "includeInNotification":true,
           "searchWeight":-1
         },
         {
@@ -176,7 +176,7 @@
           "valuesMaxCount":1,
           "isUnique":false,
           "isIndexable":true,
-          "includeInNotification":false,
+          "includeInNotification":true,
           "searchWeight":-1
         },
         {
@@ -188,7 +188,7 @@
           "valuesMaxCount":-1,
           "isUnique":false,
           "isIndexable":true,
-          "includeInNotification":false,
+          "includeInNotification":true,
           "searchWeight":-1
         },{
           "name":"additionalAttributes",
@@ -199,7 +199,7 @@
           "valuesMaxCount":-1,
           "isUnique":false,
           "isIndexable":true,
-          "includeInNotification":false,
+          "includeInNotification":true,
           "searchWeight":-1
         }
       ]
