@@ -132,6 +132,8 @@
     <dynamicField name="*_l"  type="plong"   indexed="true"  stored="true"/>
     <dynamicField name="*_ls" type="plongs"   indexed="true"  stored="true"/>
     <dynamicField name="*_t" type="text_ik" indexed="true" stored="true" multiValued="false"/>
+    <dynamicField name="cn9_t"  type="string"  indexed="true"  stored="true" />
+
     <dynamicField name="*_txt" type="text_general" indexed="true" stored="true"/>
     <dynamicField name="*_b"  type="boolean" indexed="true" stored="true"/>
     <dynamicField name="*_bs" type="booleans" indexed="true" stored="true"/>
