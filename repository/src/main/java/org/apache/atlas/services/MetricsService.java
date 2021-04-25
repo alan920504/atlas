@@ -103,26 +103,26 @@ public class MetricsService {
         if (entityDefNames != null) {
             for (String entityDefName : entityDefNames) {
                 long activeCount  = getTypeCount(entityDefName, ACTIVE);
-                long deletedCount = getTypeCount(entityDefName, DELETED);
-                long shellCount = getTypeShellCount(entityDefName);
+            //    long deletedCount = getTypeCount(entityDefName, DELETED);
+            //    long shellCount = getTypeShellCount(entityDefName);
 
                 if (activeCount > 0) {
                     activeEntityCount.put(entityDefName, activeCount);
                     totalEntities += activeCount;
                 }
 
-                if (deletedCount > 0) {
+              /*  if (deletedCount > 0) {
                     deletedEntityCount.put(entityDefName, deletedCount);
                     totalEntities += deletedCount;
                 }
 
                 if (activeCount == 0 && deletedCount == 0) {
                     unusedTypeCount++;
-                }
+                }*/
 
-                if(shellCount>0){
+                /*if(shellCount>0){
                     shellEntityCount.put(entityDefName, shellCount);
-                }
+                }*/
             }
         }
 
@@ -164,7 +164,7 @@ public class MetricsService {
         metrics.addMetric(GENERAL, METRIC_COLLECTION_TIME, System.currentTimeMillis());
         metrics.addMetric(GENERAL, METRIC_STATS, metricsUtil.getStats()); //add atlas server stats
         metrics.addMetric(GENERAL, METRIC_TYPE_COUNT, getAllTypesCount());
-        metrics.addMetric(GENERAL, METRIC_TAG_COUNT, getAllTagsCount());
+//        metrics.addMetric(GENERAL, METRIC_TAG_COUNT, getAllTagsCount());
         metrics.addMetric(GENERAL, METRIC_TYPE_UNUSED_COUNT, unusedTypeCount);
         metrics.addMetric(GENERAL, METRIC_ENTITY_COUNT, totalEntities);
 
