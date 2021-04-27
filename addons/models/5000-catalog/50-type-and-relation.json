@@ -252,17 +252,38 @@
       "typeVersion": "1.0",
       "attributeDefs": [
         {
-          "name": "__version",
+          "name": "createTs",
           "typeName": "long",
-          "isOptional": true,
+          "isOptional": false,
           "isUnique": false,
           "includeInNotification": true
         },
         {
-          "name": "__deleteFlag",
-          "typeName": "boolean",
-          "isOptional": true,
+          "name": "updateTs",
+          "typeName": "long",
+          "isOptional": false,
           "isUnique": false,
+          "includeInNotification": true
+        },
+        {
+          "name": "version",
+          "typeName": "string",
+          "isOptional": false,
+          "isUnique": false,
+          "includeInNotification": true
+        },
+        {
+          "name": "deleteFlag",
+          "typeName": "boolean",
+          "isOptional": false,
+          "isUnique": false,
+          "includeInNotification": true
+        },
+        {
+          "name": "qualifiedName",
+          "typeName": "string",
+          "isOptional": false,
+          "isUnique": true,
           "includeInNotification": true
         }
       ],
