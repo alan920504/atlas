@@ -245,6 +245,33 @@
           "includeInNotification":false
         }
       ]
+    },
+    {
+      "name": "UserDefineBaseModel",
+      "description": "user define base model",
+      "typeVersion": "1.0",
+      "attributeDefs": [
+        {
+          "name": "__version",
+          "typeName": "long",
+          "isOptional": true,
+          "isUnique": false,
+          "includeInNotification": true
+        },
+        {
+          "name": "__deleteFlag",
+          "typeName": "boolean",
+          "isOptional": true,
+          "isUnique": false,
+          "includeInNotification": true
+        }
+      ],
+      "superTypes": [
+        "Asset"
+      ],
+      "subTypes": [],
+      "relationshipAttributeDefs": [],
+      "businessAttributeDefs": {}
     }
   ],
   "relationshipDefs":[

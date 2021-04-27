@@ -28,6 +28,45 @@
           "indexType": "STRING"
         }
       ]
+    },
+    {
+      "id": "TYPEDEF_PATCH_0005_002",
+      "description": "Add __createTs, __updateTs,__createBy,__updateBy to Asset",
+      "action": "ADD_ATTRIBUTE",
+      "typeName": "Asset",
+      "applyToVersion": "1.12",
+      "updateToVersion": "1.13",
+      "params": null,
+      "attributeDefs": [
+        {
+          "name": "__createTs",
+          "typeName": "date",
+          "isOptional": true,
+          "isUnique": false,
+          "includeInNotification": true
+        },
+        {
+          "name": "__updateTs",
+          "typeName": "date",
+          "isOptional": false,
+          "isUnique": false,
+          "includeInNotification": true
+        },
+        {
+          "name": "__createBy",
+          "typeName": "string",
+          "isOptional": true,
+          "isUnique": false,
+          "includeInNotification": true
+        },
+        {
+          "name": "__updateBy",
+          "typeName": "string",
+          "isOptional": true,
+          "isUnique": false,
+          "includeInNotification": true
+        }
+      ]
     }
   ]
 }
