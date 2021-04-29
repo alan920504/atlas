@@ -253,21 +253,21 @@
       "attributeDefs": [
         {
           "name": "createTs",
-          "typeName": "long",
+          "typeName": "date",
           "isOptional": false,
           "isUnique": false,
           "includeInNotification": true
         },
         {
           "name": "updateTs",
-          "typeName": "long",
+          "typeName": "date",
           "isOptional": false,
           "isUnique": false,
           "includeInNotification": true
         },
         {
           "name": "version",
-          "typeName": "string",
+          "typeName": "long",
           "isOptional": false,
           "isUnique": false,
           "includeInNotification": true
