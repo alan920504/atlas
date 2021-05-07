@@ -25,7 +25,8 @@
           "valuesMaxCount":1,
           "isUnique":true,
           "isIndexable":true,
-          "includeInNotification":true
+          "includeInNotification":true,
+          "indexType": "STRING"
         },
         {
           "name":"isRoot",
@@ -93,7 +94,8 @@
           "valuesMaxCount":1,
           "isUnique":true,
           "isIndexable":true,
-          "includeInNotification":true
+          "includeInNotification":true,
+          "indexType": "STRING"
         },
         {
           "name":"isSystem",
@@ -117,7 +119,8 @@
           "isUnique":true,
           "isIndexable":true,
           "includeInNotification":false,
-          "searchWeight":7
+          "searchWeight":7,
+          "indexType": "STRING"
         },
         {
           "name":"createdBy",
@@ -189,7 +192,7 @@
           "isUnique":false,
           "isIndexable":true,
           "includeInNotification":true,
-          "searchWeight":-1
+          "searchWeight":10
         },{
           "name":"additionalAttributes",
           "typeName":"map<string,string>",
@@ -200,7 +203,7 @@
           "isUnique":false,
           "isIndexable":true,
           "includeInNotification":true,
-          "searchWeight":-1
+          "searchWeight":10
         }
       ]
     },
@@ -284,7 +287,8 @@
           "typeName": "string",
           "isOptional": false,
           "isUnique": true,
-          "includeInNotification": true
+          "includeInNotification": true,
+          "indexType": "STRING"
         }
       ],
       "superTypes": [

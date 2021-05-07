@@ -314,16 +314,16 @@ public class GraphBackedSearchIndexer implements SearchIndexer, ActiveStateChang
             }
 
             // create vertex indexes
-            createCommonVertexIndex(management, GUID_PROPERTY_KEY, UniqueKind.GLOBAL_UNIQUE, String.class, SINGLE, true, false);
-            createCommonVertexIndex(management, HISTORICAL_GUID_PROPERTY_KEY, UniqueKind.GLOBAL_UNIQUE, String.class, SINGLE, true, false);
+            createCommonVertexIndexWithoutPrefix(management, GUID_PROPERTY_KEY, UniqueKind.GLOBAL_UNIQUE, String.class, SINGLE, true, false, true);
+            createCommonVertexIndexWithoutPrefix(management, HISTORICAL_GUID_PROPERTY_KEY, UniqueKind.GLOBAL_UNIQUE, String.class, SINGLE, true, false, true);
 
-            createCommonVertexIndex(management, TYPENAME_PROPERTY_KEY, UniqueKind.GLOBAL_UNIQUE, String.class, SINGLE, true, false);
+            createCommonVertexIndexWithoutPrefix(management, TYPENAME_PROPERTY_KEY, UniqueKind.GLOBAL_UNIQUE, String.class, SINGLE, true, false, true);
             createCommonVertexIndex(management, TYPESERVICETYPE_PROPERTY_KEY, UniqueKind.NONE, String.class, SINGLE, true, false);
             createCommonVertexIndex(management, VERTEX_TYPE_PROPERTY_KEY, UniqueKind.NONE, String.class, SINGLE, true, false);
             createCommonVertexIndex(management, VERTEX_ID_IN_IMPORT_KEY, UniqueKind.NONE, Long.class, SINGLE, true, false);
 
-            createCommonVertexIndex(management, ENTITY_TYPE_PROPERTY_KEY, UniqueKind.NONE, String.class, SINGLE, true, false);
-            createCommonVertexIndex(management, SUPER_TYPES_PROPERTY_KEY, UniqueKind.NONE, String.class, SET, true, false);
+            createCommonVertexIndexWithoutPrefix(management, ENTITY_TYPE_PROPERTY_KEY, UniqueKind.NONE, String.class, SINGLE, true, false, true);
+            createCommonVertexIndexWithoutPrefix(management, SUPER_TYPES_PROPERTY_KEY, UniqueKind.NONE, String.class, SET, true, false, true);
             createCommonVertexIndex(management, TIMESTAMP_PROPERTY_KEY, UniqueKind.NONE, Long.class, SINGLE, false, false);
             createCommonVertexIndex(management, MODIFICATION_TIMESTAMP_PROPERTY_KEY, UniqueKind.NONE, Long.class, SINGLE, false, false);
             createCommonVertexIndex(management, STATE_PROPERTY_KEY, UniqueKind.NONE, String.class, SINGLE, false, false);
@@ -471,6 +471,27 @@ public class GraphBackedSearchIndexer implements SearchIndexer, ActiveStateChang
                                                         cardinality,
                                                         createCompositeIndex,
                                                         createCompositeIndexWithTypeAndSuperTypes, isStringField);
+        if(indexFieldName != null) {
+            typeRegistry.addIndexFieldName(propertyName, indexFieldName);
+        }
+    }
+
+    private void createCommonVertexIndexWithoutPrefix(AtlasGraphManagement management,
+                                         String propertyName,
+                                         UniqueKind uniqueKind,
+                                         Class propertyClass,
+                                         AtlasCardinality cardinality,
+                                         boolean createCompositeIndex,
+                                         boolean createCompositeIndexWithTypeAndSuperTypes,
+                                         boolean isStringField) {
+
+        final String indexFieldName = createVertexIndex(management,
+                propertyName,
+                uniqueKind,
+                propertyClass,
+                cardinality,
+                createCompositeIndex,
+                createCompositeIndexWithTypeAndSuperTypes, isStringField);
         if(indexFieldName != null) {
             typeRegistry.addIndexFieldName(propertyName, indexFieldName);
         }

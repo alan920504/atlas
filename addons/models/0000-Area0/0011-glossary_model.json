@@ -94,7 +94,8 @@
           "cardinality": "SINGLE",
           "isIndexable": true,
           "isOptional": false,
-          "isUnique": true
+          "isUnique": true,
+          "indexType": "STRING"
         },
         {
           "name": "name",
@@ -102,7 +103,8 @@
           "cardinality": "SINGLE",
           "isIndexable": true,
           "isOptional": false,
-          "isUnique": false
+          "isUnique": false,
+          "indexType": "STRING"
         },
         {
           "name": "shortDescription",
@@ -162,7 +164,8 @@
           "cardinality": "SINGLE",
           "isIndexable": true,
           "isOptional": false,
-          "isUnique": true
+          "isUnique": true,
+          "indexType": "STRING"
         },
         {
           "name": "name",
@@ -170,7 +173,8 @@
           "cardinality": "SINGLE",
           "isIndexable": true,
           "isOptional": false,
-          "isUnique": false
+          "isUnique": false,
+          "indexType": "STRING"
         },
         {
           "name": "shortDescription",
@@ -238,7 +242,8 @@
           "cardinality": "SINGLE",
           "isIndexable": true,
           "isOptional": false,
-          "isUnique": true
+          "isUnique": true,
+          "indexType": "STRING"
         },
         {
           "name": "name",
@@ -246,7 +251,8 @@
           "cardinality": "SINGLE",
           "isIndexable": true,
           "isOptional": false,
-          "isUnique": false
+          "isUnique": false,
+          "indexType": "STRING"
         },
         {
           "name": "shortDescription",

@@ -44,7 +44,8 @@
           "cardinality": "SINGLE",
           "isIndexable": true,
           "isOptional": false,
-          "isUnique": true
+          "isUnique": true,
+          "indexType": "STRING"
         }
       ]
     },
