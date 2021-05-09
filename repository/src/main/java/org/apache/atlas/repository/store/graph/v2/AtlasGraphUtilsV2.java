@@ -505,6 +505,7 @@ public class AtlasGraphUtilsV2 {
                                                   .has(ENTITY_TYPE_PROPERTY_KEY, typename);
         if (sortOrder != null) {
             AtlasGraphQuery.SortOrder qrySortOrder = sortOrder == SortOrder.ASCENDING ? ASC : DESC;
+            // 只有查询glossary用到
             query.orderBy(Constants.QUALIFIED_NAME, qrySortOrder);
         }
 
