@@ -79,8 +79,7 @@
           "cardinality": "SINGLE",
           "isIndexable": true,
           "isOptional": true,
-          "isUnique": false,
-          "indexType": "STRING"
+          "isUnique": false
         },
         {
           "name": "description",

@@ -72,7 +72,7 @@
           "valuesMinCount":-1,
           "valuesMaxCount":-1,
           "isUnique":false,
-          "isIndexable":false,
+          "isIndexable":true,
           "includeInNotification":false,
           "searchWeight":-1
         }

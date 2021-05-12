@@ -139,7 +139,7 @@
     </logger>
 
     <logger name="METRICS" additivity="false">
-        <level value="debug"/>
+        <level value="warn"/>
         <appender-ref ref="METRICS"/>
     </logger>
 
@@ -148,6 +148,21 @@
         <appender-ref ref="FAILED"/>
         <appender-ref ref="console"/>
     </logger>
+    <!--   <logger name="org.janusgraph.diskstorage.berkeleyje.BerkeleyJEStoreManager" additivity="false">
+        <level value="trace"/>
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="org.janusgraph.diskstorage.berkeleyje.BerkeleyJEKeyValueStore" additivity="false">
+        <level value="trace"/>
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="com.sleepycat.je.Database" additivity="false">
+        <level value="trace"/>
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="console"/>
+    </logger> -->
 
     <root>
         <priority value="warn"/>

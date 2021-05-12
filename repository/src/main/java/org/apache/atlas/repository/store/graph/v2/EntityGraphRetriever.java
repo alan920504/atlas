@@ -121,7 +121,7 @@ import static org.apache.atlas.type.AtlasStructType.AtlasAttribute.AtlasRelation
 public class EntityGraphRetriever {
     private static final Logger LOG = LoggerFactory.getLogger(EntityGraphRetriever.class);
 
-    private static final String GLOSSARY_TERM_DISPLAY_NAME_ATTR = "AtlasGlossaryTerm.name";
+    private static final String GLOSSARY_TERM_DISPLAY_NAME_ATTR = "AtlasGlossaryTerm.__s_name";
     public  static final String TERM_RELATION_NAME              = "AtlasGlossarySemanticAssignment";
 
     public static final String NAME           = "name";
@@ -863,6 +863,7 @@ public class EntityGraphRetriever {
             ret.setRelationGuid(relationGuid);
         }
 
+        // name当作id使用改成string后在图引擎中的fieldName 为AtlasGlossaryTerm.__s_name
         Object displayName = AtlasGraphUtilsV2.getEncodedProperty(termVertex, GLOSSARY_TERM_DISPLAY_NAME_ATTR, Object.class);
         if (displayName instanceof String) {
             ret.setDisplayText((String) displayName);
