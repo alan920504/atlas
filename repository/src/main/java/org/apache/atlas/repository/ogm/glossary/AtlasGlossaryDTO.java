@@ -27,10 +27,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.inject.Inject;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 @Component
 public class AtlasGlossaryDTO extends AbstractGlossaryDTO<AtlasGlossary> {
@@ -59,6 +56,11 @@ public class AtlasGlossaryDTO extends AbstractGlossaryDTO<AtlasGlossary> {
         ret.setLanguage((String) entity.getAttribute("language"));
         ret.setUsage((String) entity.getAttribute("usage"));
         ret.setAdditionalAttributes((Map) entity.getAttribute("additionalAttributes"));
+        ret.setI18nName((Map) entity.getAttribute("i18nName"));
+        ret.setCreateBy((String)entity.getAttribute("createBy"));
+        ret.setCreateTime((Date)entity.getAttribute("createTime"));
+        ret.setUpdateBy((String)entity.getAttribute("updateBy"));
+        ret.setUpdateTime((Date)entity.getAttribute("updateTime"));
 
         Object categoriesAttr = entity.getRelationshipAttribute("categories");
         Object termsAttr = entity.getRelationshipAttribute("terms");
@@ -122,6 +124,10 @@ public class AtlasGlossaryDTO extends AbstractGlossaryDTO<AtlasGlossary> {
         ret.setAttribute("language", obj.getLanguage());
         ret.setAttribute("usage", obj.getUsage());
         ret.setAttribute("additionalAttributes", obj.getAdditionalAttributes());
+        ret.setAttribute("createBy", obj.getCreateBy());
+        ret.setAttribute("createTime", obj.getCreateTime());
+        ret.setAttribute("updateBy", obj.getUpdateBy());
+        ret.setAttribute("updateTime", obj.getUpdateTime());
 
         if (LOG.isDebugEnabled()) {
             LOG.debug("<== AtlasGlossaryDTO.toEntity() : {}", ret);

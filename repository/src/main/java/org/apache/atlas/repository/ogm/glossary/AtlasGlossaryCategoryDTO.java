@@ -29,10 +29,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.inject.Inject;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Collection;
+import java.util.*;
 
 @Component
 public class AtlasGlossaryCategoryDTO extends AbstractGlossaryDTO<AtlasGlossaryCategory> {
@@ -58,6 +55,11 @@ public class AtlasGlossaryCategoryDTO extends AbstractGlossaryDTO<AtlasGlossaryC
         ret.setShortDescription((String) entity.getAttribute("shortDescription"));
         ret.setLongDescription((String) entity.getAttribute("longDescription"));
         ret.setAdditionalAttributes((Map) entity.getAttribute("additionalAttributes"));
+        ret.setI18nName((Map) entity.getAttribute("i18nName"));
+        ret.setCreateBy((String)entity.getAttribute("createBy"));
+        ret.setCreateTime((Date)entity.getAttribute("createTime"));
+        ret.setUpdateBy((String)entity.getAttribute("updateBy"));
+        ret.setUpdateTime((Date)entity.getAttribute("updateTime"));
 
         Object anchor = entity.getRelationshipAttribute("anchor");
         if (anchor instanceof AtlasRelatedObjectId) {
@@ -128,6 +130,10 @@ public class AtlasGlossaryCategoryDTO extends AbstractGlossaryDTO<AtlasGlossaryC
         ret.setAttribute("longDescription", obj.getLongDescription());
         ret.setAttribute("anchor", new AtlasObjectId(obj.getAnchor().getGlossaryGuid()));
         ret.setAttribute("additionalAttributes", obj.getAdditionalAttributes());
+        ret.setAttribute("createBy", obj.getCreateBy());
+        ret.setAttribute("createTime", obj.getCreateTime());
+        ret.setAttribute("updateBy", obj.getUpdateBy());
+        ret.setAttribute("updateTime", obj.getUpdateTime());
 
         if (LOG.isDebugEnabled()) {
             LOG.debug("<== AtlasGlossaryCategoryDTO.toEntity() : {}", ret);
