@@ -1,0 +1,128 @@
+{
+  "patches": [
+    {
+      "id": "TYPEDEF_PATCH_0006_001",
+      "description": "Add createBy and updateBy and createTime and updateTime to Glossary",
+      "action": "ADD_ATTRIBUTE",
+      "typeName": "AtlasGlossary",
+      "applyToVersion": "1.3",
+      "updateToVersion": "1.4",
+      "params": null,
+      "attributeDefs": [
+        {
+          "name": "createBy",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "updateBy",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional": true,
+          "isUnique": false
+        },{
+          "name": "createTime",
+          "typeName": "date",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "updateTime",
+          "typeName": "date",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional": true,
+          "isUnique": false
+        }
+      ]
+    },{
+      "id": "TYPEDEF_PATCH_0006_002",
+      "description": "Add createBy and updateBy and createTime and updateTime to AtlasGlossaryTerm",
+      "action": "ADD_ATTRIBUTE",
+      "typeName": "AtlasGlossaryTerm",
+      "applyToVersion": "1.3",
+      "updateToVersion": "1.4",
+      "params": null,
+      "attributeDefs": [
+        {
+          "name": "createBy",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "updateBy",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional": true,
+          "isUnique": false
+        },{
+          "name": "createTime",
+          "typeName": "date",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "updateTime",
+          "typeName": "date",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional": true,
+          "isUnique": false
+        }
+      ]
+    },{
+      "id": "TYPEDEF_PATCH_0006_002",
+      "description": "Add createBy and updateBy and createTime and updateTime to AtlasGlossaryCategory",
+      "action": "ADD_ATTRIBUTE",
+      "typeName": "AtlasGlossaryCategory",
+      "applyToVersion": "1.3",
+      "updateToVersion": "1.4",
+      "params": null,
+      "attributeDefs": [
+        {
+          "name": "createBy",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "updateBy",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional": true,
+          "isUnique": false
+        },{
+          "name": "createTime",
+          "typeName": "date",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "updateTime",
+          "typeName": "date",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional": true,
+          "isUnique": false
+        }
+      ]
+    }
+  ]
+}

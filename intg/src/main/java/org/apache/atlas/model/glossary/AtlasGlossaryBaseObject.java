@@ -22,10 +22,7 @@ import org.apache.atlas.model.AtlasBaseModelObject;
 import org.apache.atlas.model.instance.AtlasClassification;
 import org.apache.commons.collections.CollectionUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Map;
+import java.util.*;
 
 
 public abstract class AtlasGlossaryBaseObject extends AtlasBaseModelObject {
@@ -37,6 +34,10 @@ public abstract class AtlasGlossaryBaseObject extends AtlasBaseModelObject {
     protected String longDescription;
     private Map<String, Object> additionalAttributes;
     protected Map<String, String> i18nName;
+    private String createBy;
+    private Date createTime;
+    private String updateBy;
+    private Date updateTime;
 
     // Classifications
     protected List<AtlasClassification> classifications;
@@ -112,6 +113,38 @@ public abstract class AtlasGlossaryBaseObject extends AtlasBaseModelObject {
         this.i18nName = i18nName;
     }
 
+    public String getCreateBy() {
+        return createBy;
+    }
+
+    public void setCreateBy(String createBy) {
+        this.createBy = createBy;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getUpdateBy() {
+        return updateBy;
+    }
+
+    public void setUpdateBy(String updateBy) {
+        this.updateBy = updateBy;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
     @JsonIgnore
     public void addClassification(AtlasClassification classification) {
         List<AtlasClassification> classifications = this.classifications;
@@ -141,7 +174,11 @@ public abstract class AtlasGlossaryBaseObject extends AtlasBaseModelObject {
                 Objects.equals(shortDescription, that.shortDescription) &&
                 Objects.equals(longDescription, that.longDescription) &&
                 Objects.equals(additionalAttributes, that.additionalAttributes) &&
-                Objects.equals(classifications, that.classifications);
+                Objects.equals(classifications, that.classifications) &&
+                Objects.equals(createBy, that.createBy) &&
+                Objects.equals(createTime, that.createTime) &&
+                Objects.equals(updateBy, that.updateBy) &&
+                Objects.equals(updateTime, that.updateTime);
     }
 
     @Override
