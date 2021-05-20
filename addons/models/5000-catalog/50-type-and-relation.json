@@ -178,7 +178,7 @@
           "valuesMinCount":0,
           "valuesMaxCount":1,
           "isUnique":false,
-          "isIndexable":true,
+          "isIndexable":false,
           "includeInNotification":true,
           "searchWeight":-1
         },

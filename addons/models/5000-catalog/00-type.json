@@ -14,7 +14,7 @@
 				"name": "id",
 				"typeName": "string",
 				"cardinality": "SINGLE",
-				"isIndexable": false,
+				"isIndexable": true,
 				"isOptional": false
 			},
 			{
