@@ -83,7 +83,7 @@
         }
       ]
     },{
-      "id": "TYPEDEF_PATCH_0006_002",
+      "id": "TYPEDEF_PATCH_0006_003",
       "description": "Add createBy and updateBy and createTime and updateTime to AtlasGlossaryCategory",
       "action": "ADD_ATTRIBUTE",
       "typeName": "AtlasGlossaryCategory",
