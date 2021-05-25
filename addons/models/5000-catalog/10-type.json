@@ -40,35 +40,38 @@
           "typeName": "string",
           "cardinality": "SINGLE",
           "isIndexable": true,
-          "isOptional": false
+          "isOptional": false,
+          "indexType": "STRING",
+          "includeInNotification": true,
+          "searchWeight":10
         },
         {                
           "name": "fileType",
           "typeName": "string",
           "cardinality": "SINGLE",
           "isIndexable": true,
-          "isOptional": false
+          "isOptional": false,
+          "indexType": "STRING",
+          "includeInNotification": true,
+          "searchWeight":10
         },
         {
           "name": "description",
           "typeName": "string",
           "cardinality": "SINGLE",
           "isIndexable": true,
-          "isOptional": true
+          "isOptional": true,
+          "includeInNotification": true,
+          "searchWeight":10
         },
         {
           "name": "filePattern",
           "typeName": "array<map<string,string>>",
           "cardinality": "LIST",
           "isIndexable": true,
-          "isOptional": false
-        },
-        {
-          "name": "createdBy",
-          "typeName": "string",
-          "cardinality": "SINGLE",
-          "isIndexable": false,
-          "isOptional": false
+          "isOptional": false,
+          "includeInNotification": true,
+          "searchWeight":10
         }
       ]
     },{
@@ -83,49 +86,55 @@
 				"typeName": "string",
 				"cardinality": "SINGLE",
 				"isIndexable": true,
-				"isOptional": false
-			},
+				"isOptional": false,
+                "indexType": "STRING",
+                "includeInNotification": true,
+                "searchWeight":10
+            },
 			{
 				"name": "fileType",
 				"typeName": "string",
 				"cardinality": "SINGLE",
 				"isIndexable": true,
-				"isOptional": false
-			},
+				"isOptional": false,
+                "indexType": "STRING",
+                "includeInNotification": true,
+                "searchWeight":10
+            },
 			{
 				"name": "storageType",
 				"typeName": "string",
 				"cardinality": "SINGLE",
 				"isIndexable": true,
-				"isOptional": false
-			},
+				"isOptional": false,
+                "indexType": "STRING",
+                "includeInNotification": true,
+                "searchWeight":10
+            },
 			{
 				"name": "description",
 				"typeName": "string",
 				"cardinality": "SINGLE",
 				"isIndexable": true,
-				"isOptional": true
-			},
-			{
-				"name": "createdBy",
-				"typeName": "string",
-				"cardinality": "SINGLE",
-				"isIndexable": false,
-				"isOptional": false
-			},
+				"isOptional": true,
+                "includeInNotification": true,
+                "searchWeight":10
+            },
 			{
 				"name": "sourceName",
 				"typeName": "string",
 				"cardinality": "SINGLE",
 				"isIndexable": false,
-				"isOptional": false
+				"isOptional": false,
+                "includeInNotification": true
 			},
 			{
 				"name": "sourceId",
 				"typeName": "string",
 				"cardinality": "SINGLE",
 				"isIndexable": false,
-				"isOptional": false
+				"isOptional": false,
+                "includeInNotification": true
 			}
 		]
 	}

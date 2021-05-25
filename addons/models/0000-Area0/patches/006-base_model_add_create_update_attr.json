@@ -10,35 +10,43 @@
       "params": null,
       "attributeDefs": [
         {
-          "name": "createBy",
+          "name": "createdBy",
           "typeName": "string",
           "cardinality": "SINGLE",
           "isIndexable": true,
           "isOptional": true,
-          "isUnique": false
+          "isUnique": false,
+          "indexType": "STRING",
+          "includeInNotification": true,
+          "searchWeight": 10
         },
         {
-          "name": "updateBy",
+          "name": "updatedBy",
           "typeName": "string",
           "cardinality": "SINGLE",
           "isIndexable": true,
           "isOptional": true,
-          "isUnique": false
+          "isUnique": false,
+          "indexType": "STRING",
+          "includeInNotification": true,
+          "searchWeight": 10
         },{
-          "name": "createTime",
+          "name": "createdTime",
           "typeName": "date",
           "cardinality": "SINGLE",
-          "isIndexable": true,
+          "isIndexable": false,
           "isOptional": true,
-          "isUnique": false
+          "isUnique": false,
+          "includeInNotification": true
         },
         {
-          "name": "updateTime",
+          "name": "updatedTime",
           "typeName": "date",
           "cardinality": "SINGLE",
-          "isIndexable": true,
+          "isIndexable": false,
           "isOptional": true,
-          "isUnique": false
+          "isUnique": false,
+          "includeInNotification": true
         }
       ]
     },{
@@ -51,35 +59,43 @@
       "params": null,
       "attributeDefs": [
         {
-          "name": "createBy",
+          "name": "createdBy",
           "typeName": "string",
           "cardinality": "SINGLE",
           "isIndexable": true,
           "isOptional": true,
-          "isUnique": false
+          "isUnique": false,
+          "indexType": "STRING",
+          "includeInNotification": true,
+          "searchWeight": 10
         },
         {
-          "name": "updateBy",
+          "name": "updatedBy",
           "typeName": "string",
           "cardinality": "SINGLE",
           "isIndexable": true,
           "isOptional": true,
-          "isUnique": false
+          "isUnique": false,
+          "indexType": "STRING",
+          "includeInNotification": true,
+          "searchWeight": 10
         },{
-          "name": "createTime",
+          "name": "createdTime",
           "typeName": "date",
           "cardinality": "SINGLE",
-          "isIndexable": true,
+          "isIndexable": false,
           "isOptional": true,
-          "isUnique": false
+          "isUnique": false,
+          "includeInNotification": true
         },
         {
-          "name": "updateTime",
+          "name": "updatedTime",
           "typeName": "date",
           "cardinality": "SINGLE",
-          "isIndexable": true,
+          "isIndexable": false,
           "isOptional": true,
-          "isUnique": false
+          "isUnique": false,
+          "includeInNotification": true
         }
       ]
     },{
@@ -92,35 +108,43 @@
       "params": null,
       "attributeDefs": [
         {
-          "name": "createBy",
+          "name": "createdBy",
           "typeName": "string",
           "cardinality": "SINGLE",
           "isIndexable": true,
           "isOptional": true,
-          "isUnique": false
+          "isUnique": false,
+          "indexType": "STRING",
+          "includeInNotification": true,
+          "searchWeight": 10
         },
         {
-          "name": "updateBy",
+          "name": "updatedBy",
           "typeName": "string",
           "cardinality": "SINGLE",
           "isIndexable": true,
           "isOptional": true,
-          "isUnique": false
+          "isUnique": false,
+          "indexType": "STRING",
+          "includeInNotification": true,
+          "searchWeight": 10
         },{
-          "name": "createTime",
+          "name": "createdTime",
           "typeName": "date",
           "cardinality": "SINGLE",
-          "isIndexable": true,
+          "isIndexable": false,
           "isOptional": true,
-          "isUnique": false
+          "isUnique": false,
+          "includeInNotification": true
         },
         {
-          "name": "updateTime",
+          "name": "updatedTime",
           "typeName": "date",
           "cardinality": "SINGLE",
-          "isIndexable": true,
+          "isIndexable": false,
           "isOptional": true,
-          "isUnique": false
+          "isUnique": false,
+          "includeInNotification": true
         }
       ]
     }

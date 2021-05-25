@@ -17,7 +17,9 @@
           "isIndexable": true,
           "isOptional": false,
           "isUnique": false,
-          "indexType": "STRING"
+          "indexType": "STRING",
+          "searchWeight":10,
+          "includeInNotification": true
         }
       ]
     },{
@@ -33,6 +35,7 @@
           "valuesMaxCount": 1,
           "isUnique": false,
           "isIndexable": true,
+          "searchWeight":10,
           "includeInNotification": false,
           "indexType": "STRING"
         },
@@ -45,7 +48,8 @@
           "valuesMaxCount": 1,
           "isUnique": false,
           "isIndexable": true,
-          "includeInNotification": false
+          "searchWeight":10,
+          "includeInNotification": true
         },
         {
           "name": "nameEn",
@@ -56,7 +60,8 @@
           "valuesMaxCount": 1,
           "isUnique": false,
           "isIndexable": true,
-          "includeInNotification": false
+          "searchWeight":10,
+          "includeInNotification": true
         }
       ],
       "superTypes": [

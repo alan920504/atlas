@@ -38,8 +38,8 @@
           "valuesMaxCount":1,
           "isUnique":false,
           "isIndexable":true,
-          "includeInNotification":false,
-          "searchWeight":10
+          "includeInNotification":true,
+          "searchWeight":1
         },
         {
           "name":"isSystem",
@@ -50,8 +50,8 @@
           "valuesMaxCount":1,
           "isUnique":false,
           "isIndexable":true,
-          "includeInNotification":false,
-          "searchWeight":10
+          "includeInNotification":true,
+          "searchWeight":1
         },
         {
           "name":"qualifiedName",
@@ -62,7 +62,8 @@
           "valuesMaxCount":1,
           "isUnique":true,
           "isIndexable":true,
-          "includeInNotification":false,
+          "includeInNotification":true,
+          "indexType": "STRING",
           "searchWeight":10
         },
         {
@@ -74,7 +75,7 @@
           "valuesMaxCount":-1,
           "isUnique":false,
           "isIndexable":true,
-          "includeInNotification":false,
+          "includeInNotification":true,
           "searchWeight":10
         },{
           "name":"description",
@@ -119,8 +120,8 @@
           "valuesMaxCount":1,
           "isUnique":false,
           "isIndexable":true,
-          "includeInNotification":false,
-          "searchWeight":10
+          "includeInNotification":true,
+          "searchWeight":1
         },
         {
           "name":"qualifiedName",
@@ -132,7 +133,6 @@
           "isUnique":true,
           "isIndexable":true,
           "includeInNotification":false,
-          "searchWeight":7,
           "indexType": "STRING",
           "searchWeight":10
         },
@@ -145,7 +145,8 @@
           "valuesMaxCount":1,
           "isUnique":false,
           "isIndexable":true,
-          "includeInNotification":false,
+          "indexType": "STRING",
+          "includeInNotification":true,
           "searchWeight":10
         },
         {
@@ -157,7 +158,8 @@
           "valuesMaxCount":1,
           "isUnique":false,
           "isIndexable":true,
-          "includeInNotification":false,
+          "indexType": "STRING",
+          "includeInNotification":true,
           "searchWeight":10
         },
         {
@@ -182,6 +184,16 @@
           "isUnique":false,
           "isIndexable":false,
           "includeInNotification":true
+        },{
+          "name":"createdTime",
+          "typeName":"date",
+          "isOptional":true,
+          "cardinality":"SINGLE",
+          "valuesMinCount":0,
+          "valuesMaxCount":1,
+          "isUnique":false,
+          "isIndexable":false,
+          "includeInNotification":true
         },
         {
           "name":"attributesDef",
@@ -192,8 +204,7 @@
           "valuesMaxCount":1,
           "isUnique":false,
           "isIndexable":false,
-          "includeInNotification":true,
-          "searchWeight":-1
+          "includeInNotification":true
         },
         {
           "name":"i18nName",
@@ -247,7 +258,7 @@
           "valuesMaxCount":1,
           "isUnique":false,
           "isIndexable":false,
-          "includeInNotification":false
+          "includeInNotification":true
         },
         {
           "name":"linkField",
@@ -258,7 +269,7 @@
           "valuesMaxCount":1,
           "isUnique":false,
           "isIndexable":false,
-          "includeInNotification":false
+          "includeInNotification":true
         }
       ]
     },
@@ -268,24 +279,11 @@
       "typeVersion": "1.0",
       "attributeDefs": [
         {
-          "name": "createTs",
-          "typeName": "date",
-          "isOptional": false,
-          "isUnique": false,
-          "includeInNotification": true
-        },
-        {
-          "name": "updateTs",
-          "typeName": "date",
-          "isOptional": false,
-          "isUnique": false,
-          "includeInNotification": true
-        },
-        {
           "name": "version",
           "typeName": "long",
           "isOptional": false,
           "isUnique": false,
+          "isIndexable":true,
           "includeInNotification": true
         },
         {
@@ -293,16 +291,22 @@
           "typeName": "boolean",
           "isOptional": false,
           "isUnique": false,
+          "isIndexable":false,
           "includeInNotification": true
-        },
-        {
-          "name": "qualifiedName",
-          "typeName": "string",
-          "isOptional": false,
-          "isUnique": true,
-          "includeInNotification": true,
-          "indexType": "STRING"
         }
+      ],
+      "superTypes": [
+        "Asset"
+      ],
+      "subTypes": [],
+      "relationshipAttributeDefs": [],
+      "businessAttributeDefs": {}
+    },
+    {
+      "name": "UserDefineLogicBaseModel",
+      "description": "user define base model",
+      "typeVersion": "1.0",
+      "attributeDefs": [
       ],
       "superTypes": [
         "Asset"

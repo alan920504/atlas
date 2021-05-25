@@ -70,8 +70,7 @@
           "cardinality": "SINGLE",
           "isIndexable": true,
           "isOptional": false,
-          "isUnique": false,
-          "indexType": "STRING"
+          "isUnique": false
         },
         {
           "name": "displayName",
@@ -79,7 +78,8 @@
           "cardinality": "SINGLE",
           "isIndexable": true,
           "isOptional": true,
-          "isUnique": false
+          "isUnique": false,
+          "searchWeight": 10
         },
         {
           "name": "description",
@@ -96,7 +96,8 @@
           "isIndexable": true,
           "isOptional": true,
           "isUnique": false,
-          "indexType": "STRING"
+          "indexType": "STRING",
+          "searchWeight": 10
         },
         {
           "name": "owner",

@@ -16,47 +16,60 @@
         "typeName": "string",
         "cardinality": "SINGLE",
         "isIndexable": false,
-        "isOptional": false
+        "isOptional": false,
+        "indexType": "STRING",
+        "includeInNotification": true,
+        "searchWeight":10
       },
       {
         "name": "description",
         "typeName": "string",
         "cardinality": "SINGLE",
         "isIndexable": true,
-        "isOptional": true
+        "isOptional": true,
+        "includeInNotification": true,
+        "searchWeight":10
       },
       {
         "name": "odataNamespace",
         "typeName": "string",
         "cardinality": "SINGLE",
         "isIndexable": true,
-        "isOptional": false
+        "isOptional": false,
+        "includeInNotification": true,
+        "searchWeight":10
       },
       {
         "name": "host",
         "typeName": "string",
         "cardinality": "SINGLE",
         "isIndexable": true,
-        "isOptional": false
+        "isOptional": false,
+        "indexType": "STRING",
+        "includeInNotification": true,
+        "searchWeight":10
       },{
         "name": "metadataEntityField",
         "typeName": "string",
         "cardinality": "SINGLE",
         "isIndexable": false,
-        "isOptional": true
+        "isOptional": true,
+        "includeInNotification": true
       },{
         "name": "odataSelectReplaceField",
         "typeName": "string",
         "cardinality": "SINGLE",
         "isIndexable": false,
-        "isOptional": true
+        "isOptional": true,
+        "includeInNotification": true
       },
       {
         "name": "extraParams",
         "typeName": "array<string>",
         "cardinality": "LIST",
         "isIndexable": false,
-        "isOptional": true
+        "isOptional": true,
+        "includeInNotification": true
       }
     ]
   }],

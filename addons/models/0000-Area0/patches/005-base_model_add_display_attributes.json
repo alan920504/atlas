@@ -5,8 +5,8 @@
       "description": "Add displayName and userDescription to Asset",
       "action": "ADD_ATTRIBUTE",
       "typeName": "Asset",
-      "applyToVersion": "1.11",
-      "updateToVersion": "1.12",
+      "applyToVersion": "1.9",
+      "updateToVersion": "1.10",
       "params": null,
       "attributeDefs": [
         {
@@ -16,7 +16,8 @@
           "isIndexable": true,
           "isOptional": true,
           "isUnique": false,
-          "indexType": "STRING"
+          "indexType": "STRING",
+          "searchWeight": 10
         },
         {
           "name": "userDescription",
@@ -25,7 +26,8 @@
           "isIndexable": true,
           "isOptional": true,
           "isUnique": false,
-          "indexType": "STRING"
+          "indexType": "STRING",
+          "searchWeight": 10
         }
       ]
     }

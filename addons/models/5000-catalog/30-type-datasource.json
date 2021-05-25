@@ -1,0 +1,37 @@
+{
+  "enumDefs": [],
+  "structDefs": [],
+  "classificationDefs": [],
+  "entityDefs": [
+    {
+      "name": "DataSource",
+      "superTypes": [
+        "DataSet"
+      ],
+      "typeVersion": "1.0",
+      "attributeDefs": [
+        {
+          "name": "id",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional": false,
+          "isUnique": false,
+          "indexType": "STRING",
+          "searchWeight":10,
+          "includeInNotification": true
+        },
+        {
+          "name": "config",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": false,
+          "isUnique": false,
+          "includeInNotification": true
+        }
+      ]
+    }
+  ],
+  "relationshipDefs": []
+}

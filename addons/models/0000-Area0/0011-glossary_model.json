@@ -95,7 +95,9 @@
           "isIndexable": true,
           "isOptional": false,
           "isUnique": true,
-          "indexType": "STRING"
+          "indexType": "STRING",
+          "includeInNotification": true,
+          "searchWeight": 10
         },
         {
           "name": "name",
@@ -104,7 +106,9 @@
           "isIndexable": true,
           "isOptional": false,
           "isUnique": false,
-          "indexType": "STRING"
+          "indexType": "STRING",
+          "includeInNotification": true,
+          "searchWeight": 10
         },
         {
           "name": "shortDescription",
@@ -118,9 +122,11 @@
           "name": "longDescription",
           "typeName": "string",
           "cardinality": "SINGLE",
-          "isIndexable": false,
+          "isIndexable": true,
           "isOptional": true,
-          "isUnique": false
+          "isUnique": false,
+          "searchWeight": 10
+
         },
         {
           "name": "language",
@@ -165,7 +171,8 @@
           "isIndexable": true,
           "isOptional": false,
           "isUnique": true,
-          "indexType": "STRING"
+          "includeInNotification": true,
+          "searchWeight": 10
         },
         {
           "name": "name",
@@ -174,7 +181,9 @@
           "isIndexable": true,
           "isOptional": false,
           "isUnique": false,
-          "indexType": "STRING"
+          "indexType": "STRING",
+          "includeInNotification": true,
+          "searchWeight": 10
         },
         {
           "name": "shortDescription",
@@ -188,9 +197,11 @@
           "name": "longDescription",
           "typeName": "string",
           "cardinality": "SINGLE",
-          "isIndexable": false,
+          "isIndexable": true,
           "isOptional": true,
-          "isUnique": false
+          "isUnique": false,
+          "searchWeight": 10
+
         },
         {
           "name": "examples",
@@ -243,7 +254,9 @@
           "isIndexable": true,
           "isOptional": false,
           "isUnique": true,
-          "indexType": "STRING"
+          "indexType": "STRING",
+          "includeInNotification": true,
+          "searchWeight": 10
         },
         {
           "name": "name",
@@ -252,7 +265,9 @@
           "isIndexable": true,
           "isOptional": false,
           "isUnique": false,
-          "indexType": "STRING"
+          "indexType": "STRING",
+          "includeInNotification": true,
+          "searchWeight": 10
         },
         {
           "name": "shortDescription",
@@ -266,9 +281,10 @@
           "name": "longDescription",
           "typeName": "string",
           "cardinality": "SINGLE",
-          "isIndexable": false,
+          "isIndexable": true,
           "isOptional": true,
-          "isUnique": false
+          "isUnique": false,
+          "searchWeight": 10
         },
         {
           "name": "additionalAttributes",

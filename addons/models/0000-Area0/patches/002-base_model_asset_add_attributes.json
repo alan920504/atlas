@@ -18,7 +18,8 @@
           "valuesMaxCount": 1,
           "isUnique": false,
           "isIndexable": true,
-          "includeInNotification": false
+          "indexType": "STRING",
+          "includeInNotification": true
         },
         {
           "name": "createdBy",
@@ -29,15 +30,17 @@
           "valuesMaxCount": 1,
           "isUnique": false,
           "isIndexable": true,
-          "includeInNotification": false
+          "indexType": "STRING",
+          "includeInNotification": true
         },
         {
           "name": "createdTime",
           "typeName": "date",
           "cardinality": "SINGLE",
-          "isIndexable": true,
+          "isIndexable": false,
           "isOptional": true,
-          "isUnique": false
+          "isUnique": false,
+          "includeInNotification": true
         },
         {
           "name": "updatedBy",
@@ -45,15 +48,18 @@
           "cardinality": "SINGLE",
           "isIndexable": true,
           "isOptional": true,
-          "isUnique": false
+          "isUnique": false,
+          "indexType": "STRING",
+          "includeInNotification": true
         },
         {
           "name": "updatedTime",
           "typeName": "date",
           "cardinality": "SINGLE",
-          "isIndexable": true,
+          "isIndexable": false,
           "isOptional": true,
-          "isUnique": false
+          "isUnique": false,
+          "includeInNotification": true
         }
       ]
     }

@@ -15,28 +15,27 @@
 				"typeName": "string",
 				"cardinality": "SINGLE",
 				"isIndexable": true,
-				"isOptional": false
+				"isOptional": false,
+				"indexType": "STRING",
+				"includeInNotification": true,
+				"searchWeight":10
 			},
 			{
 				"name": "description",
 				"typeName": "string",
 				"cardinality": "SINGLE",
 				"isIndexable": true,
-				"isOptional": true
+				"isOptional": true,
+				"includeInNotification": true,
+				"searchWeight":10
 			},
 			{
 				"name": "columns",
 				"typeName": "array<map<string,string>>",
 				"cardinality": "LIST",
 				"isIndexable": false,
-				"isOptional": false
-			},
-			{
-				"name": "createdBy",
-				"typeName": "string",
-				"cardinality": "SINGLE",
-				"isIndexable": false,
-				"isOptional": false
+				"isOptional": false,
+				"includeInNotification": true
 			}
 		]
 	}],

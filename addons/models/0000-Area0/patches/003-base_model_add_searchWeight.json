@@ -31,7 +31,7 @@
       "updateToVersion": "1.5",
       "attributeName":   "description",
       "params": {
-        "searchWeight": 9
+        "searchWeight": 10
       }
     }, {
       "id":              "TYPEDEF_PATCH_0000_036",
@@ -42,7 +42,7 @@
       "updateToVersion": "1.6",
       "attributeName":   "owner",
       "params": {
-        "searchWeight": 9
+        "searchWeight": 10
       }
     }, {
       "id":              "TYPEDEF_PATCH_0000_040",
@@ -53,7 +53,7 @@
       "updateToVersion": "1.7",
       "attributeName":   "sourceType",
       "params": {
-        "searchWeight": 7
+        "searchWeight": 10
       }
     }, {
       "id":              "TYPEDEF_PATCH_0000_041",
@@ -64,40 +64,18 @@
       "updateToVersion": "1.8",
       "attributeName":   "createdBy",
       "params": {
-        "searchWeight": 5
-      }
-    }, {
-      "id":              "TYPEDEF_PATCH_0000_042",
-      "description":     "Adding search Weights",
-      "action":          "UPDATE_ATTRIBUTE_METADATA",
-      "typeName":        "Asset",
-      "applyToVersion":  "1.8",
-      "updateToVersion": "1.9",
-      "attributeName":   "createdTime",
-      "params": {
-        "searchWeight": 7
+        "searchWeight": 10
       }
     }, {
       "id":              "TYPEDEF_PATCH_0000_043",
       "description":     "Adding search Weights",
       "action":          "UPDATE_ATTRIBUTE_METADATA",
       "typeName":        "Asset",
-      "applyToVersion":  "1.9",
-      "updateToVersion": "1.10",
+      "applyToVersion":  "1.8",
+      "updateToVersion": "1.9",
       "attributeName":   "updatedBy",
       "params": {
-        "searchWeight": 5
-      }
-    }, {
-      "id":              "TYPEDEF_PATCH_0000_044",
-      "description":     "Adding search Weights",
-      "action":          "UPDATE_ATTRIBUTE_METADATA",
-      "typeName":        "Asset",
-      "applyToVersion":  "1.10",
-      "updateToVersion": "1.11",
-      "attributeName":   "updatedTime",
-      "params": {
-        "searchWeight": 7
+        "searchWeight": 10
       }
     }, {
       "id":              "TYPEDEF_PATCH_0000_037",
