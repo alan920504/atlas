@@ -32,7 +32,7 @@
           "name": "i18nName",
           "typeName": "map<string,string>",
           "cardinality": "SINGLE",
-          "isIndexable": false,
+          "isIndexable": true,
           "isOptional": true,
           "isUnique": false
         }

@@ -26,7 +26,8 @@
           "isUnique":true,
           "isIndexable":true,
           "includeInNotification":true,
-          "indexType": "STRING"
+          "indexType": "STRING",
+          "searchWeight":10
         },
         {
           "name":"isRoot",
@@ -62,7 +63,7 @@
           "isUnique":true,
           "isIndexable":true,
           "includeInNotification":false,
-          "searchWeight":7
+          "searchWeight":10
         },
         {
           "name":"i18nName",
@@ -74,7 +75,18 @@
           "isUnique":false,
           "isIndexable":true,
           "includeInNotification":false,
-          "searchWeight":-1
+          "searchWeight":10
+        },{
+          "name":"description",
+          "typeName":"string",
+          "isOptional":true,
+          "cardinality":"SINGLE",
+          "valuesMinCount":0,
+          "valuesMaxCount":1,
+          "isUnique":false,
+          "isIndexable":true,
+          "includeInNotification":true,
+          "searchWeight":10
         }
       ]
     },
@@ -95,7 +107,8 @@
           "isUnique":true,
           "isIndexable":true,
           "includeInNotification":true,
-          "indexType": "STRING"
+          "indexType": "STRING",
+          "searchWeight":10
         },
         {
           "name":"isSystem",
@@ -120,7 +133,8 @@
           "isIndexable":true,
           "includeInNotification":false,
           "searchWeight":7,
-          "indexType": "STRING"
+          "indexType": "STRING",
+          "searchWeight":10
         },
         {
           "name":"createdBy",
@@ -132,7 +146,7 @@
           "isUnique":false,
           "isIndexable":true,
           "includeInNotification":false,
-          "searchWeight":-1
+          "searchWeight":10
         },
         {
           "name":"updatedBy",
@@ -144,7 +158,7 @@
           "isUnique":false,
           "isIndexable":true,
           "includeInNotification":false,
-          "searchWeight":-1
+          "searchWeight":10
         },
         {
           "name":"description",
@@ -156,7 +170,7 @@
           "isUnique":false,
           "isIndexable":true,
           "includeInNotification":true,
-          "searchWeight":-1
+          "searchWeight":10
         },
         {
           "name":"updatedTime",
@@ -167,8 +181,7 @@
           "valuesMaxCount":1,
           "isUnique":false,
           "isIndexable":false,
-          "includeInNotification":true,
-          "searchWeight":-1
+          "includeInNotification":true
         },
         {
           "name":"attributesDef",
@@ -178,7 +191,7 @@
           "valuesMinCount":0,
           "valuesMaxCount":1,
           "isUnique":false,
-          "isIndexable":true,
+          "isIndexable":false,
           "includeInNotification":true,
           "searchWeight":-1
         },
