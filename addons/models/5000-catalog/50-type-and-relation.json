@@ -383,6 +383,27 @@
         "cardinality":"SINGLE",
         "isLegacyAttribute":false
       }
+    },{
+      "category": "RELATIONSHIP",
+      "name": "UserDefineBaseModel_UserDefineLogicBaseModel_Relation",
+      "description": "create",
+      "typeVersion": "1.0",
+      "attributeDefs": [],
+      "serviceType": "UD",
+      "relationshipCategory": "ASSOCIATION",
+      "propagateTags": "NONE",
+      "endDef1": {
+        "type": "UserDefineLogicBaseModel",
+        "name": "physicalData",
+        "isContainer": false,
+        "cardinality": "SET"
+      },
+      "endDef2": {
+        "type": "UserDefineBaseModel",
+        "name": "logicalData",
+        "isContainer": false,
+        "cardinality": "SINGLE"
+      }
     }
   ]
 }
