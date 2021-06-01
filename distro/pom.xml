@@ -187,6 +187,7 @@ atlas.graph.index.search.solr.http-urls=http://localhost:8983/solr
 atlas.graph.index.search.solr.http-max-per-host=100
 atlas.graph.index.search.solr.http-max=100
 atlas.graph.index.search.solr.wait-searcher=false
+atlas.graph.index.search.map-name=false
                 </graph.index.properties>
 
                 <cassandra.embedded>false</cassandra.embedded>

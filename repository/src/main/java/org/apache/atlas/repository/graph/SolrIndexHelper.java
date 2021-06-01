@@ -60,6 +60,8 @@ public class SolrIndexHelper implements IndexChangeListener {
 
     private final AtlasTypeRegistry typeRegistry;
 
+    private static final String ATLAS_GLOSSARY_PREFIX = "AtlasGlossary";
+
 
     public SolrIndexHelper(AtlasTypeRegistry typeRegistry) {
         this.typeRegistry = typeRegistry;
@@ -135,7 +137,7 @@ public class SolrIndexHelper implements IndexChangeListener {
         ret.put(typeRegistry.getIndexFieldName(TYPE_NAME_PROPERTY_KEY), SEARCHWEIGHT_FOR_TYPENAME);
 
         for (AtlasEntityType entityType : typeRegistry.getAllEntityTypes()) {
-            if (entityType.isInternalType()) {
+            if (entityType.isInternalType() && !entityType.getTypeName().startsWith(ATLAS_GLOSSARY_PREFIX)) {
                 continue;
             }
 
