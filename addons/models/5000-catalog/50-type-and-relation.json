@@ -389,7 +389,7 @@
       "description": "create",
       "typeVersion": "1.0",
       "attributeDefs": [],
-      "serviceType": "UD",
+      "serviceType": "",
       "relationshipCategory": "ASSOCIATION",
       "propagateTags": "NONE",
       "endDef1": {

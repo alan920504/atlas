@@ -147,7 +147,7 @@ public class StartEntityFetchByExportRequest {
             }
 
             List<String> guids = executeGremlinQuery(queryTemplate,
-                                    getBindingsForObjectId(typeName, attribute.getQualifiedName(), e.getValue()));
+                                    getBindingsForObjectId(typeName, attribute.getVertexPropertyName(), e.getValue()));
 
             if (!CollectionUtils.isNotEmpty(guids)) {
                 continue;
